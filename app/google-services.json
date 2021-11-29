@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "476071550222",
+    "project_id": "asesoriasulima-ed003",
+    "storage_bucket": "asesoriasulima-ed003.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:476071550222:android:3f9c0a2fc9bc2bd86a4b5f",
+        "android_client_info": {
+          "package_name": "pe.edu.ulima.pm.asesoriasulima"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "476071550222-lto069ngr8iuq9dnsv8j8a159kelvscm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUIPDzA7Xa_UxJGvjQREwatmtEpG7Vl6E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "476071550222-lto069ngr8iuq9dnsv8j8a159kelvscm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

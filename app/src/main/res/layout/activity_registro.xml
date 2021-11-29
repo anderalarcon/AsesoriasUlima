@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/tiemposheadline_black"
+        android:gravity="center"
+        android:text="Registro"
+        android:textColor="@color/black"
+        android:textSize="40dp"></TextView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <androidx.constraintlayout.utils.widget.ImageFilterView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:src="@drawable/logo_ulima">
+
+        </androidx.constraintlayout.utils.widget.ImageFilterView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/etCodigoForm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="5dp"
+            android:backgroundTint="@color/black"
+            android:fontFamily="@font/montserrat_medium"
+
+            android:hint="Ingrese su codigo Ulima"
+            android:textColor="@color/black"
+            android:textSize="18dp"></EditText>
+
+        <EditText
+            android:id="@+id/etNombreForm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="5dp"
+            android:backgroundTint="@color/black"
+            android:fontFamily="@font/montserrat_medium"
+            android:hint="Ingrese su nombre completo"
+            android:textSize="18dp"></EditText>
+
+        <EditText
+            android:id="@+id/etPasswordForm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
+            android:backgroundTint="@color/black"
+            android:fontFamily="@font/montserrat_medium"
+            android:hint="Ingrese contraseña"
+            android:inputType="textPassword"
+
+            android:textSize="18dp"></EditText>
+
+
+        <RadioGroup
+            android:id="@+id/containerButtonGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginRight="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radioAlumno"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:buttonTint="#fd671a"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="Soy Alumno"
+
+                android:textSize="15dp"></RadioButton>
+
+            <RadioButton
+                android:id="@+id/radioProfesor"
+                android:layout_width="wrap_content"
+
+                android:layout_height="wrap_content"
+                android:buttonTint="#fd671a"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="Soy Profesor"
+                android:textSize="15dp"></RadioButton>
+        </RadioGroup>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+
+        <Button
+            android:id="@+id/btnRegistrarseForm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:backgroundTint="#fd671a"
+            android:fontFamily="@font/montserrat_bold"
+
+            android:text="Registrar"></Button>
+
+
+    </LinearLayout>
+
+</LinearLayout>

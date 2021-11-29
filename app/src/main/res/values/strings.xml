@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">AsesoriasUlima</string>
+    <string name="alumno_menu_asesorias">Asesorias</string>
+    <string name="alumno_menu_registros">Mis registros</string>
+    <string name="alumno_menu_cuenta">Mi Cuenta</string>
+    <string name="alumno_menu_salir">Salir</string>
 </resources>

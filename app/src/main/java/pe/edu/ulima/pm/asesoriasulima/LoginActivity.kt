@@ -24,8 +24,8 @@ class LoginActivity : AppCompatActivity() {
         val btnIngresar = findViewById<Button>(R.id.btnIngresar)
         val btnRegistrarse = findViewById<Button>(R.id.btnRegistrarse)
 
-        var cheq = false
-
+        var existeYesAlumno = false
+        var existeYesProfe = false
         if (isLoguedInterno()) {//pasar directamente al main activity
             val username = getLoginUsernameInterno()
             val intent: Intent = Intent()
@@ -43,16 +43,27 @@ class LoginActivity : AppCompatActivity() {
                     for (i in res) {
                         if (i.codigo == findViewById<EditText>(R.id.etcodigoLogin).text.toString() && i.password == findViewById<EditText>(
                                 R.id.etpasswordLogin
-                            ).text.toString()
+                            ).text.toString() && i.rol == "Alumno"
                         ) {
-                            cheq = true
+                            existeYesAlumno = true
+                        } else if (i.codigo == findViewById<EditText>(R.id.etcodigoLogin).text.toString() && i.password == findViewById<EditText>(
+                                R.id.etpasswordLogin
+                            ).text.toString() && i.rol == "Profesor"
+                        ) {
+                            existeYesProfe = true
                         }
                     }
-                    if (cheq) {
+                    if (existeYesAlumno) {
                         almacenarAfterLogin(findViewById<EditText>(R.id.etcodigoLogin).text.toString())
                         intent.setClass(this, MainActivity::class.java) //pasamos next activity
                         startActivity(intent)
-                        Toast.makeText(this, "Bienvenido", Toast.LENGTH_SHORT)
+                        Toast.makeText(this, "Bienvenido Alumno", Toast.LENGTH_SHORT)
+                            .show()
+                    } else if (existeYesProfe) {
+                        almacenarAfterLogin(findViewById<EditText>(R.id.etcodigoLogin).text.toString())
+                        intent.setClass(this, MainActivity::class.java) //pasamos next activity
+                        startActivity(intent)
+                        Toast.makeText(this, "Bienvenido Profe", Toast.LENGTH_SHORT)
                             .show()
                     } else {
                         Toast.makeText(this, "Error en credenciales", Toast.LENGTH_SHORT).show()
@@ -62,7 +73,8 @@ class LoginActivity : AppCompatActivity() {
                     Toast.makeText(this, "Error:" + error, Toast.LENGTH_SHORT).show()
                 })
 
-                cheq = false
+                existeYesAlumno = false
+                existeYesProfe = false
             } else {
                 Toast.makeText(this, "Campos obligatorios", Toast.LENGTH_SHORT).show()
             }
@@ -101,8 +113,6 @@ class LoginActivity : AppCompatActivity() {
             return false
         }
         return true
-        //val loginInfo=Gson().fromJson<LoginInfo>(cadena,LoginInfo::class.java)
-        //de json a objeto
 
     }
 

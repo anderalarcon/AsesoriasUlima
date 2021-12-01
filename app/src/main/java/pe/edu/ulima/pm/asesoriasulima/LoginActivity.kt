@@ -16,6 +16,7 @@ import java.util.*
 
 data class LoginInfo(val username: String, val LoginDate: Long)
 class LoginActivity : AppCompatActivity() {
+    var pantallaFragment = 1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -55,13 +56,23 @@ class LoginActivity : AppCompatActivity() {
                     }
                     if (existeYesAlumno) {
                         almacenarAfterLogin(findViewById<EditText>(R.id.etcodigoLogin).text.toString())
+                        pantallaFragment = 1
+                        val bundle: Bundle = Bundle()//Almacenamos data
+                        bundle.putInt("pantallaFragment", pantallaFragment)
+                        bundle.putString("codigo", findViewById<EditText>(R.id.etcodigoLogin).text.toString())
+                        intent.putExtra("data", bundle)
                         intent.setClass(this, MainActivity::class.java) //pasamos next activity
                         startActivity(intent)
                         Toast.makeText(this, "Bienvenido Alumno", Toast.LENGTH_SHORT)
                             .show()
                     } else if (existeYesProfe) {
+                        pantallaFragment = 2
+                        val bundle: Bundle = Bundle()//Almacenamos data
                         almacenarAfterLogin(findViewById<EditText>(R.id.etcodigoLogin).text.toString())
-                        intent.setClass(this, MainActivity::class.java) //pasamos next activity
+                        bundle.putInt("pantallaFragment", pantallaFragment)
+                        bundle.putString("codigo", findViewById<EditText>(R.id.etcodigoLogin).text.toString())
+                        intent.putExtra("data", bundle)
+                        intent.setClass(this, MainActivityProfesor::class.java) //pasamos next activity
                         startActivity(intent)
                         Toast.makeText(this, "Bienvenido Profe", Toast.LENGTH_SHORT)
                             .show()

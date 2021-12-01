@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="160dp"
+    android:layout_marginBottom="10dp"
+    android:background="@drawable/fondo_card_asesorias_proife">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Programación Movil"
+            android:textSize="25dp"
+
+
+            android:fontFamily="@font/montserrat_black"
+            android:textColor="#fd671a">
+
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_medium"
+            android:background="@color/black"
+            android:text="Sección: 801"
+            android:textSize="20dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="@color/white">
+
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_medium"
+            android:text="Asesorías:"
+            android:background="@color/black"
+            android:layout_marginBottom="5dp"
+            android:textSize="20dp"
+            android:textColor="@color/white">
+
+        </TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_medium"
+            android:background="@color/black"
+            android:textSize="20dp"
+            android:text="Miercoles y viernes 9-10 am, jueves 5-7 pm"
+            android:textColor="@color/white">
+
+        </TextView>
+
+
+
+    </LinearLayout>
+
+
+
+
+</RelativeLayout>

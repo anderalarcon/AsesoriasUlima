@@ -28,22 +28,29 @@
                 android:textSize="25dp">
 
             </TextView>
-
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                />
             <Button
+                android:id="@+id/RegistrarAsesoriaProfesor"
                 style="@style/Widget.MaterialComponents.Button.Icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
                 android:fontFamily="@font/tiemposheadline_black"
+
+                app:iconGravity="textStart"
                 android:text="Registrar"
-                android:layout_marginLeft="70dp"
+
 
                 app:icon="@android:drawable/ic_input_add"></Button>
         </LinearLayout>
 
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/ReciclerCardPokemon"
+            android:id="@+id/ReciclerMisAsesoriasProfesor"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"

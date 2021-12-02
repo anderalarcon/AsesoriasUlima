@@ -27,8 +27,10 @@ class LoginActivity : AppCompatActivity() {
 
         var existeYesAlumno = false
         var existeYesProfe = false
+
         var idLongGlobal : Long = 0
-        /*if (isLoguedInterno()) {//pasar directamente al main activity
+
+/*        if (isLoguedInterno()) {//pasar directamente al main activity
             val username = getLoginUsernameInterno()
             val intent: Intent = Intent()
             intent.setClass(this, MainActivity::class.java) //pasamos next activity

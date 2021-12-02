@@ -14,7 +14,7 @@ import pe.edu.ulima.pm.asesoriasulima.model.AsesoriasAlumno
 class AsesoriasAlumnoFragment: Fragment() {
 
     interface interfaceAsesoriasALumnos{
-        fun ChangeVerDetalle()
+        fun ChangeVerDetalle(Asesorias : AsesoriasAlumno)
     }
 
     private var listener: interfaceAsesoriasALumnos? = null
@@ -50,7 +50,7 @@ class AsesoriasAlumnoFragment: Fragment() {
             this
         ){AsesoriasAlumno : AsesoriasAlumno ->
             println("xd")
-            listener?.ChangeVerDetalle()
+            listener?.ChangeVerDetalle(AsesoriasAlumno)
         }
 
     }

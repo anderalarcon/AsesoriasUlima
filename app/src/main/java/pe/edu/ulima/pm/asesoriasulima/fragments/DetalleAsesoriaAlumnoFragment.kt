@@ -6,10 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import pe.edu.ulima.pm.asesoriasulima.R
+import pe.edu.ulima.pm.asesoriasulima.model.AsesoriasAlumno
 
-class DetalleAsesoriaAlumnoFragment:Fragment() {
+class DetalleAsesoriaAlumnoFragment (val Asesoria : AsesoriasAlumno):Fragment() {
 
     interface interfaceDetalleALumnos{
         fun ChangeRegistrarAsesoriaAlumno()
@@ -34,6 +36,11 @@ class DetalleAsesoriaAlumnoFragment:Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        view.findViewById<TextView>(R.id.tviCursoAsesoriaAlumnoDETALLE).setText(Asesoria.nombreCurso)
+        view.findViewById<TextView>(R.id.tviSeccionAsesoriaAlumnoDETALLE).setText("Sección: ${Asesoria.seccion}")
+        view.findViewById<TextView>(R.id.tviProfesorAsesoriaAlumnoDETALLE).setText("Profesor: ${Asesoria.profesor}")
+        view.findViewById<TextView>(R.id.tviListaAsesoriaAlumnoDETALLE).setText(Asesoria.asesorias)
 
         val butRegistrar = view.findViewById<Button>(R.id.butRegistrarAsesoria)
         val butRegresarAsesorias = view.findViewById<Button>(R.id.butVolverAsesorias)

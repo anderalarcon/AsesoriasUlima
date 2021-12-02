@@ -20,7 +20,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Programación Móvil"
-            android:textColor="@color/black"
+            android:fontFamily="@font/montserrat_bold"
+            android:textColor="#fd671a"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
         <TextView
@@ -29,6 +30,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="Sección: 501"
+            android:fontFamily="@font/montserrat_bold"
+            android:textColor="#fd671a"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
         <TextView
@@ -36,6 +39,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:textColor="#fd671a"
             android:text="Profesor: Hernan Quintana"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
@@ -44,6 +49,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="Asesorias:"
+            android:fontFamily="@font/montserrat_bold"
+            android:textColor="#fd671a"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
         <TextView
@@ -51,6 +58,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="0dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:textColor="#fd671a"
             android:text="Miercoles y viernes 9-10 am, jueves 5-7 pm"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 

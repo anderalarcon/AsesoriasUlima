@@ -41,6 +41,7 @@ class LoginManager {
             val users = arrayListOf<Useer>()
             for (document in res) {
                 val usuario = Useer(
+                    document.id.toLong(),
                     document.data["codigo"] as String,
                     document.data["password"] as String,
                     document.data["rol"] as String,

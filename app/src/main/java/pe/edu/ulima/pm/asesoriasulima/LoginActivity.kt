@@ -27,12 +27,13 @@ class LoginActivity : AppCompatActivity() {
 
         var existeYesAlumno = false
         var existeYesProfe = false
-        if (isLoguedInterno()) {//pasar directamente al main activity
+        var idLongGlobal : Long = 0
+        /*if (isLoguedInterno()) {//pasar directamente al main activity
             val username = getLoginUsernameInterno()
             val intent: Intent = Intent()
             intent.setClass(this, MainActivity::class.java) //pasamos next activity
             startActivity(intent)
-        }
+        }*/
 
         btnIngresar.setOnClickListener {
             if (findViewById<EditText>(R.id.etcodigoLogin).text.toString() != "" && findViewById<EditText>(
@@ -47,11 +48,13 @@ class LoginActivity : AppCompatActivity() {
                             ).text.toString() && i.rol == "Alumno"
                         ) {
                             existeYesAlumno = true
+                            idLongGlobal = i.id
                         } else if (i.codigo == findViewById<EditText>(R.id.etcodigoLogin).text.toString() && i.password == findViewById<EditText>(
                                 R.id.etpasswordLogin
                             ).text.toString() && i.rol == "Profesor"
                         ) {
                             existeYesProfe = true
+                            idLongGlobal = i.id
                         }
                     }
                     if (existeYesAlumno) {
@@ -60,6 +63,7 @@ class LoginActivity : AppCompatActivity() {
                         val bundle: Bundle = Bundle()//Almacenamos data
                         bundle.putInt("pantallaFragment", pantallaFragment)
                         bundle.putString("codigo", findViewById<EditText>(R.id.etcodigoLogin).text.toString())
+                        bundle.putLong("id",idLongGlobal)
                         intent.putExtra("data", bundle)
                         intent.setClass(this, MainActivity::class.java) //pasamos next activity
                         startActivity(intent)
@@ -71,6 +75,7 @@ class LoginActivity : AppCompatActivity() {
                         almacenarAfterLogin(findViewById<EditText>(R.id.etcodigoLogin).text.toString())
                         bundle.putInt("pantallaFragment", pantallaFragment)
                         bundle.putString("codigo", findViewById<EditText>(R.id.etcodigoLogin).text.toString())
+                        bundle.putLong("id",idLongGlobal)
                         intent.putExtra("data", bundle)
                         intent.setClass(this, MainActivityProfesor::class.java) //pasamos next activity
                         startActivity(intent)

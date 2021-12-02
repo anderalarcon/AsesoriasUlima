@@ -27,12 +27,12 @@ class LoginActivity : AppCompatActivity() {
 
         var existeYesAlumno = false
         var existeYesProfe = false
-        if (isLoguedInterno()) {//pasar directamente al main activity
+/*        if (isLoguedInterno()) {//pasar directamente al main activity
             val username = getLoginUsernameInterno()
             val intent: Intent = Intent()
             intent.setClass(this, MainActivity::class.java) //pasamos next activity
             startActivity(intent)
-        }
+        }*/
 
         btnIngresar.setOnClickListener {
             if (findViewById<EditText>(R.id.etcodigoLogin).text.toString() != "" && findViewById<EditText>(

@@ -12,6 +12,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/curso_asesoria"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Programación Movil"
@@ -24,6 +25,7 @@
         </TextView>
 
         <TextView
+            android:id="@+id/seccion_asesoria"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat_medium"
@@ -47,6 +49,7 @@
 
         </TextView>
         <TextView
+            android:id="@+id/dias_asesorias"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat_medium"

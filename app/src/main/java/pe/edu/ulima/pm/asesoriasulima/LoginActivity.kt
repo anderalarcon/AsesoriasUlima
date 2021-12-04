@@ -73,7 +73,7 @@ class LoginActivity : AppCompatActivity() {
                         }
                     }
                     if (existeYesAlumno) {
-                        almacenarAfterLoginAlumno(findViewById<EditText>(R.id.etcodigoLogin).text.toString())
+                        almacenarAfterLoginAlumno(findViewById<EditText>(R.id.etcodigoLogin).text.toString(),aux)
                         pantallaFragment = 1
                         val bundle: Bundle = Bundle()//Almacenamos data
                         bundle.putInt("pantallaFragment", pantallaFragment)
@@ -145,9 +145,9 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    fun almacenarAfterLoginAlumno(codigo: String) {
+    fun almacenarAfterLoginAlumno(codigo: String,IdField:Long) {
         val gson = Gson()
-        val logininfo = LoginInfo(codigo, Date().time)
+        val logininfo = LoginInfo(codigo,IdField)
         //guardamos como archivo
         openFileOutput("Login_infoAlumno.json", Context.MODE_PRIVATE).use {
             it.write(gson.toJson(logininfo).toByteArray(Charsets.UTF_8))

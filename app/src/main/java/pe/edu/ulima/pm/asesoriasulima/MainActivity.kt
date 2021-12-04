@@ -9,11 +9,13 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import com.google.android.material.navigation.NavigationView
+import com.google.gson.Gson
 import pe.edu.ulima.pm.asesoriasulima.fragments.*
 import pe.edu.ulima.pm.asesoriasulima.fragments.profesor.MisAsesoriasFragment
 import pe.edu.ulima.pm.asesoriasulima.model.Asesorias
 import pe.edu.ulima.pm.asesoriasulima.model.AsesoriasAlumno
 import pe.edu.ulima.pm.asesoriasulima.model.CuentaManager
+import java.io.FileNotFoundException
 
 class MainActivity : AppCompatActivity(),
     AsesoriasAlumnoFragment.interfaceAsesoriasALumnos,
@@ -29,18 +31,10 @@ class MainActivity : AppCompatActivity(),
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AsesoriaGlobal = Asesorias(1,"","","","","","")
-        pantallaFragment = intent.getBundleExtra("data")?.getInt("pantallaFragment")!!
-       println("codigo" + intent.getBundleExtra("data")?.getString("codigo")!!)
-        println("pantalla: " + pantallaFragment)
-        println("IDDocumento: " + intent.getBundleExtra("data")?.getLong("id")!!)
-        IdDocumentoUser = intent.getBundleExtra("data")?.getLong("id")!!
-
+        
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-        if (pantallaFragment == 1) {
-            println("Alumno")
             fragments.add(AsesoriasAlumnoFragment())
             fragments.add(RegistroAlumnosFragment())
             fragments.add(CuentaFragment())
@@ -72,7 +66,7 @@ class MainActivity : AppCompatActivity(),
             val ft = supportFragmentManager.beginTransaction()
             ft.add(R.id.flaContent, fragments[0])
             ft.commit()
-        }
+
 
 
     }
@@ -158,10 +152,29 @@ class MainActivity : AppCompatActivity(),
         if(NewNombre.equals("") && NewPassword.equals("")){
             Toast.makeText(this, "Complete los datos", Toast.LENGTH_SHORT).show()
         }else{
-            CuentaManager.instance.updateUsuarioAlumno(IdDocumentoUser, NewNombre, NewPassword)
+            CuentaManager.instance.updateUsuarioAlumno(getLoginCodigoInternoAlumno().id, NewNombre, NewPassword)
             Toast.makeText(this, "Datos Actualizados", Toast.LENGTH_SHORT).show()
         }
 
+
+    }
+
+    fun getLoginCodigoInternoAlumno():LoginInfo {
+        var cadena: String = ""
+
+        try {
+            openFileInput("Login_infoAlumno.json").use {
+                val byteArray = it.readBytes()
+                cadena = String(byteArray)
+
+            }
+
+
+        } catch (fnfe: FileNotFoundException) {
+            println("ERROR")
+        }
+        val logininfo = Gson().fromJson(cadena, LoginInfo::class.java)
+        return logininfo
 
     }
 

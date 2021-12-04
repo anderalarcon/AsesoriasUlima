@@ -104,6 +104,7 @@ class AsesoriasManager {
                 Asesorias.add(asesoria)
             }
             callbackOk(Asesorias)
+            println(Asesorias)
         }
             .addOnFailureListener {
                 callbackError(it.message!!)

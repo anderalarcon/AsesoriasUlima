@@ -27,11 +27,10 @@ class LoginActivity : AppCompatActivity() {
 
         var existeYesAlumno = false
         var existeYesProfe = false
-/*        if (isLoguedInterno()) {//pasar directamente al main activity
-            val username = getLoginUsernameInterno()
-            val intent: Intent = Intent()
-            intent.setClass(this, MainActivity::class.java) //pasamos next activity
-            startActivity(intent)
+ /*     if (isLoguedInterno()) {//pasar directamente al main activity
+          println("YA SE HABIA LOGUEADO")
+            val codigo= getLoginCodigoInterno()
+            changeToMainActivityProfesor(codigo)
         }*/
 
         btnIngresar.setOnClickListener {
@@ -101,9 +100,22 @@ class LoginActivity : AppCompatActivity() {
 
     }
 
-    fun almacenarAfterLogin(username: String) {
+    private fun changeToMainActivityProfesor(codigo:String) {
+        val intent: Intent = Intent()
+        //siempre que nos pide un context , poner this  y a donde quiero ir
+        intent.setClass(this, MainActivityProfesor::class.java)
+
+        //Tipo hashmap,diccionario. Para guardar datos y poderlo usar en el sgte activity
+        val bundle: Bundle = Bundle()
+        bundle.putString("codigo", codigo)
+        intent.putExtra("data", bundle)
+
+        startActivity(intent)
+    }
+
+    fun almacenarAfterLogin(codigo: String) {
         val gson = Gson()
-        val logininfo = LoginInfo(username, Date().time)
+        val logininfo = LoginInfo(codigo, Date().time)
         //guardamos como archivo
         openFileOutput("Login_info.json", Context.MODE_PRIVATE).use {
             it.write(gson.toJson(logininfo).toByteArray(Charsets.UTF_8))
@@ -127,7 +139,7 @@ class LoginActivity : AppCompatActivity() {
 
     }
 
-    fun getLoginUsernameInterno(): String {
+    fun getLoginCodigoInterno(): String {
         var cadena: String = ""
 
         try {

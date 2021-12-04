@@ -1,14 +1,220 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Registrar Asesoria"
-        >
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="50dp"
+        android:fontFamily="@font/tiemposheadline_black"
+        android:gravity="center"
+        android:text="Registrar Asesoría"
+        android:textColor="@color/black"
+        android:textSize="40dp">
 
     </TextView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--   <androidx.constraintlayout.utils.widget.ImageFilterView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:src="@drawable/logo_ulima">
+
+       </androidx.constraintlayout.utils.widget.ImageFilterView>-->
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:fontFamily="@font/montserrat_black"
+                android:text="Curso:"
+                android:textSize="18dp">
+
+            </TextView>
+
+            <EditText
+                android:id="@+id/etcursoAregistrar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                android:backgroundTint="@color/black"
+                android:fontFamily="@font/montserrat_medium"
+                android:hint="Ingrese el curso"
+                android:inputType="text"
+                android:textSize="18dp">
+
+            </EditText>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:fontFamily="@font/montserrat_black"
+                android:text="Sección:"
+                android:textSize="18dp">
+
+            </TextView>
+
+            <EditText
+                android:id="@+id/etseccionaRegistrar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                android:backgroundTint="@color/black"
+                android:fontFamily="@font/montserrat_medium"
+                android:hint="Ingrese la sección"
+                android:inputType="text"
+                android:textSize="18dp">
+
+            </EditText>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:fontFamily="@font/montserrat_black"
+                android:text="Url:"
+                android:textSize="18dp">
+
+            </TextView>
+
+            <EditText
+                android:id="@+id/eturl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                android:backgroundTint="@color/black"
+                android:fontFamily="@font/montserrat_medium"
+                android:hint="Ingrese el url"
+                android:inputType="text"
+                android:textSize="18dp">
+
+            </EditText>
+
+        </LinearLayout>
+
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:hint="Selecciona el día">
+
+                <AutoCompleteTextView
+                    android:id="@+id/auto_complete_txt_Dia"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/black"
+                    android:inputType="none">
+
+                </AutoCompleteTextView>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:hint="@string/select">
+
+                <AutoCompleteTextView
+                    android:id="@+id/auto_complete_txt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/black"
+                    android:inputType="none">
+
+                </AutoCompleteTextView>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btnRegistrarAsesoria"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+
+                android:backgroundTint="#fd671a"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="Registrar Asesoría"></Button>
+
+            <Button
+                android:id="@+id/btnRegresar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="20dp"
+                android:backgroundTint="#fd671a"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="Regresar"></Button>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>

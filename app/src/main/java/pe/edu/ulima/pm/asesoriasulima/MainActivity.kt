@@ -11,20 +11,29 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.navigation.NavigationView
 import pe.edu.ulima.pm.asesoriasulima.fragments.*
 import pe.edu.ulima.pm.asesoriasulima.fragments.profesor.MisAsesoriasFragment
+import pe.edu.ulima.pm.asesoriasulima.model.Asesorias
+import pe.edu.ulima.pm.asesoriasulima.model.AsesoriasAlumno
+import pe.edu.ulima.pm.asesoriasulima.model.CuentaManager
 
 class MainActivity : AppCompatActivity(),
     AsesoriasAlumnoFragment.interfaceAsesoriasALumnos,
     DetalleAsesoriaAlumnoFragment.interfaceDetalleALumnos,
-    CrearAsesoriaAlumnoFragment.interfaceRegistroALumnos {
+    CrearAsesoriaAlumnoFragment.interfaceRegistroALumnos,
+    CuentaFragment.interfaceCuentaAlumnos{
 
     private val fragments = mutableListOf<Fragment>()
     private lateinit var dlaMain: DrawerLayout
     var pantallaFragment: Int = 0
+    var IdDocumentoUser: Long = 0
+    private lateinit var AsesoriaGlobal : Asesorias
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        AsesoriaGlobal = Asesorias(1,"","","","")
         pantallaFragment = intent.getBundleExtra("data")?.getInt("pantallaFragment")!!
-        println("codigo" + intent.getBundleExtra("data")?.getString("codigo")!!)
+       println("codigo" + intent.getBundleExtra("data")?.getString("codigo")!!)
         println("pantalla: " + pantallaFragment)
+        println("IDDocumento: " + intent.getBundleExtra("data")?.getLong("id")!!)
+        IdDocumentoUser = intent.getBundleExtra("data")?.getLong("id")!!
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -35,7 +44,7 @@ class MainActivity : AppCompatActivity(),
             fragments.add(AsesoriasAlumnoFragment())
             fragments.add(RegistroAlumnosFragment())
             fragments.add(CuentaFragment())
-            fragments.add(DetalleAsesoriaAlumnoFragment())
+            fragments.add(DetalleAsesoriaAlumnoFragment(AsesoriaGlobal))
             fragments.add(CrearAsesoriaAlumnoFragment())
 
             // Configurando NavigationView
@@ -49,6 +58,10 @@ class MainActivity : AppCompatActivity(),
                     changeAlumnosRegistrosFragment()
                 } else if (menuItem.itemId == R.id.menCuenta) {
                     changeCuentaFragment()
+                }else if(menuItem.itemId == R.id.menAlumnosSalir){
+                    finish()
+                    Toast.makeText(this, "Sesión finalizada", Toast.LENGTH_SHORT).show()
+                    //falta borrar JSON interno
                 }
 
                 menuItem.isChecked = true
@@ -92,6 +105,14 @@ class MainActivity : AppCompatActivity(),
         ft.commit()
     }
 
+    private fun changeDetalleAsesoriaAlumnoFragmentCONINFO(Asesoria : Asesorias) {
+        AsesoriaGlobal = Asesoria
+        val fragment = DetalleAsesoriaAlumnoFragment(Asesoria)
+        val ft = supportFragmentManager.beginTransaction()
+        ft.replace(R.id.flaContent,fragment)
+        ft.commit()
+    }
+
     private fun changeCrearAsesoriaAlumnoFragment() {
         val fragment = fragments[4]
         val ft = supportFragmentManager.beginTransaction()
@@ -108,8 +129,10 @@ class MainActivity : AppCompatActivity(),
 
     }
 
-    override fun ChangeVerDetalle() {
-        changeDetalleAsesoriaAlumnoFragment()
+    override fun ChangeVerDetalle(Asesoria: Asesorias) {
+        AsesoriaGlobal = Asesoria
+        println(AsesoriaGlobal)
+        changeDetalleAsesoriaAlumnoFragmentCONINFO(Asesoria)
     }
 
     override fun ChangeRegistrarAsesoriaAlumno() {
@@ -121,12 +144,25 @@ class MainActivity : AppCompatActivity(),
     }
 
     override fun ConfirmarAsesoria() {
-        changeDetalleAsesoriaAlumnoFragment()
+        //changeDetalleAsesoriaAlumnoFragment()
+        changeDetalleAsesoriaAlumnoFragmentCONINFO(AsesoriaGlobal)
         Toast.makeText(this, "Asesoria registrada correctamente", Toast.LENGTH_SHORT).show()
     }
 
     override fun RegresaDetalle() {
-        changeDetalleAsesoriaAlumnoFragment()
+        //changeDetalleAsesoriaAlumnoFragment()
+        changeDetalleAsesoriaAlumnoFragmentCONINFO(AsesoriaGlobal)
+    }
+
+    override fun UpdateCuentaAlumno(NewNombre: String, NewPassword: String) {
+        if(NewNombre.equals("") && NewPassword.equals("")){
+            Toast.makeText(this, "Complete los datos", Toast.LENGTH_SHORT).show()
+        }else{
+            CuentaManager.instance.updateUsuarioAlumno(IdDocumentoUser, NewNombre, NewPassword)
+            Toast.makeText(this, "Datos Actualizados", Toast.LENGTH_SHORT).show()
+        }
+
+
     }
 
 

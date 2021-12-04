@@ -8,14 +8,16 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import pe.edu.ulima.pm.asesoriasulima.R
+import pe.edu.ulima.pm.asesoriasulima.model.Asesorias
 import pe.edu.ulima.pm.asesoriasulima.model.AsesoriasAlumno
 
 class AsesoriasAlumnosAdapter(
-    private val ListAsesoriasAlumno: List<AsesoriasAlumno>,
+    private val ListAsesoriasAlumno: List<Asesorias>,
+    //private val ListAsesoriasAlumnoFILTRADA: List<Asesorias>,
     private val fragment: Fragment,
-    private val listener: (AsesoriasAlumno) -> Unit
+    private val listener: (Asesorias) -> Unit
 ) : RecyclerView.Adapter<AsesoriasAlumnosAdapter.ViewHolder>(){
-    class ViewHolder(view: View, val listener: (AsesoriasAlumno) -> Unit, val ListAsesorias: List<AsesoriasAlumno>):
+    class ViewHolder(view: View, val listener: (Asesorias) -> Unit, val ListAsesorias: List<Asesorias>):
         RecyclerView.ViewHolder(view), View.OnClickListener {
 
         val tviCursoAsesoriaAlumno : TextView
@@ -39,6 +41,14 @@ class AsesoriasAlumnosAdapter(
 
 
     }
+
+   /* public fun filtrado(txtBuscar : String){
+        val longitudString = txtBuscar.length
+        if(longitudString==0){
+            ListAsesoriasAlumno.
+
+        }
+    }*/
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)

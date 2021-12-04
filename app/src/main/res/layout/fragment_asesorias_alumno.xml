@@ -11,13 +11,15 @@
         android:orientation="vertical"
         >
         <SearchView
-            android:id="@+id/SviCursoAlumnoBuscar"
+            android:id="@+id/sviCursoAlumnoBuscar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginStart="8dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="8dp"
-            android:hint="Introduzca el curso"/>
+            android:queryHint="Introduzca el curso"
+            android:iconifiedByDefault="false"
+            />
 
 
        <!-- <EditText

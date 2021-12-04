@@ -11,7 +11,7 @@
         android:orientation="vertical">
 
     <EditText
-        android:id="@+id/eteUsername"
+        android:id="@+id/eteActualizarNombre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -26,7 +26,7 @@
         app:layout_constraintTop_toBottomOf="@+id/eteNombreCuenta" />
 
         <EditText
-            android:id="@+id/eteCPasswordCuenta"
+            android:id="@+id/eteActualizarContra"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -40,6 +40,7 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
+            android:id="@+id/butActualizarCuenta"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"

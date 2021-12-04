@@ -3,15 +3,23 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Roger/pro_movil/FINAL/V2/AsesoriasUlima/app/src/main/res/layout/activity_main_profesor.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/Roger/pro_movil/FINAL/V2/AsesoriasUlima/app/src/main/res/layout/fragment_asesorias_alumno.xml" value="0.264" />
+        <entry key="..\:/Users/Roger/pro_movil/FINAL/V2/AsesoriasUlima/app/src/main/res/layout/fragment_cuenta.xml" value="0.12864583333333332" />
+        <entry key="..\:/Users/Roger/pro_movil/FINAL/V2/AsesoriasUlima/app/src/main/res/layout/fragment_detalle_asesoria_alumno.xml" value="0.4" />
+        <entry key="..\:/Users/Roger/pro_movil/FINAL/V2/AsesoriasUlima/app/src/main/res/layout/item_curso_alumno.xml" value="0.228125" />
+        <entry key="..\:/Users/Roger/pro_movil/FINAL/V2/AsesoriasUlima/app/src/main/res/menu/menu_drawer.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/Roger/pro_movil/FINAL/V2/AsesoriasUlima/app/src/main/res/menu/menu_drawerprofesor.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/ander/Desktop/Ulima21-2/ProgramacionMovil/2DAMITAD/Final/app/src/main/res/layout/activity_login.xml" value="0.22" />
         <entry key="..\:/Users/ander/Desktop/Ulima21-2/ProgramacionMovil/2DAMITAD/Final/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/ander/Desktop/Ulima21-2/ProgramacionMovil/2DAMITAD/Final/app/src/main/res/layout/activity_main_profesor.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/ander/Desktop/Ulima21-2/ProgramacionMovil/2DAMITAD/Final/app/src/main/res/layout/activity_registro.xml" value="0.20572916666666666" />
         <entry key="..\:/Users/ander/Desktop/Ulima21-2/ProgramacionMovil/2DAMITAD/Final/app/src/main/res/layout/card_asesoria_profesor.xml" value="0.33" />
-        <entry key="..\:/Users/ander/Desktop/Ulima21-2/ProgramacionMovil/2DAMITAD/Final/app/src/main/res/layout/fragment_asesorias_alumno.xml" value="0.19479166666666667" />
-        <entry key="..\:/Users/ander/Desktop/Ulima21-2/ProgramacionMovil/2DAMITAD/Final/app/src/main/res/layout/fragment_mi_cuenta_profesor.xml" value="0.3229166666666667" />
         <entry key="..\:/Users/ander/Desktop/Ulima21-2/ProgramacionMovil/2DAMITAD/Final/app/src/main/res/layout/fragment_mis_asesorias_profesor.xml" value="0.25" />
+<<<<<<< HEAD
+=======
         <entry key="..\:/Users/ander/Desktop/Ulima21-2/ProgramacionMovil/2DAMITAD/Final/app/src/main/res/layout/fragment_registrar_asesoria_profesor.xml" value="0.33" />
+>>>>>>> 2481c71a8d08a895982ab9d3e597aa62cb7f92ee
         <entry key="..\:/Users/ander/Desktop/Ulima21-2/ProgramacionMovil/2DAMITAD/Final/app/src/main/res/layout/fragment_registro_asesoria_alumno.xml" value="0.1984375" />
         <entry key="..\:/Users/ander/Desktop/Ulima21-2/ProgramacionMovil/2DAMITAD/Final/app/src/main/res/layout/item_curso_alumno.xml" value="0.1984375" />
         <entry key="..\:/Users/ander/Desktop/Ulima21-2/ProgramacionMovil/2DAMITAD/Final/app/src/main/res/layout/list_item.xml" value="0.1" />

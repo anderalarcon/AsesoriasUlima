@@ -43,7 +43,7 @@ class LoginActivity : AppCompatActivity() {
             changeToMainActivityProfesor(codigo)
 
         }*/
-
+    /*hola*/
         btnIngresar.setOnClickListener {
             if (findViewById<EditText>(R.id.etcodigoLogin).text.toString() != "" && findViewById<EditText>(
                     R.id.etpasswordLogin

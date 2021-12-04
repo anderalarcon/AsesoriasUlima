@@ -42,11 +42,11 @@ class AsesoriasAlumnoFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        val listaAsesorias = arrayListOf<Asesorias>()
+   /*     val listaAsesorias = arrayListOf<Asesorias>()
         var listasAsesoriasFiltrado = arrayListOf<Asesorias>()
         listaAsesorias.add(Asesorias(1,"Programación móvil","801","Hernan Quintana","lunes 9 - 10"))
         listaAsesorias.add(Asesorias(2,"Ingenieria de SW II","801","Nina Hanco","miercoles 9 - 10"))
-        listasAsesoriasFiltrado.addAll(listaAsesorias)
+        listasAsesoriasFiltrado.addAll(listaAsesorias)*/
         /*listaAsesorias.add(AsesoriasAlumno(2,"Ingenieria de SW II","801","Nina Hanco","miercoles 9 - 10"))
         listaAsesorias.add(AsesoriasAlumno(2,"Ingenieria de SW II","801","Nina Hanco","miercoles 9 - 10"))
         listaAsesorias.add(AsesoriasAlumno(2,"Ingenieria de SW II","801","Nina Hanco","miercoles 9 - 10"))*/
@@ -55,7 +55,7 @@ class AsesoriasAlumnoFragment: Fragment() {
 
 
 
-        val rviAsesorias = view.findViewById<RecyclerView>(R.id.rviAsesoriasAlumnos)
+/*        val rviAsesorias = view.findViewById<RecyclerView>(R.id.rviAsesoriasAlumnos)
         rviAsesorias.adapter = AsesoriasAlumnosAdapter(
             listaAsesorias,
             this@AsesoriasAlumnoFragment
@@ -88,8 +88,8 @@ class AsesoriasAlumnoFragment: Fragment() {
 
                 return true
             }
-        }
-        )
+        }*/
+       /* )*/
 
 
 

@@ -21,18 +21,17 @@ class MainActivityProfesor:AppCompatActivity(),MisAsesoriasFragment.interfaceAse
     var pantallaFragment: Int = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         pantallaFragment = intent.getBundleExtra("data")?.getInt("pantallaFragment")!!
-        println("codigo: " + intent.getBundleExtra("data")?.getString("codigo")!!)
+
         var codigo:String=intent.getBundleExtra("data")?.getString("codigo")!!
-        println("pantalla: " + pantallaFragment)
+
         super.onCreate(savedInstanceState)
-        title="Asesorías Ulima Profesores"
         requestWindowFeature(Window.FEATURE_NO_TITLE)
         getSupportActionBar()?.hide()
         setContentView(R.layout.activity_main_profesor)
 
 
 
-        fragments.add(MisAsesoriasFragment())
+        fragments.add(MisAsesoriasFragment(codigo))
         fragments.add(MiCuentaFragment())
         fragments.add(RegistrarAsesoriaFragment(codigo))
 

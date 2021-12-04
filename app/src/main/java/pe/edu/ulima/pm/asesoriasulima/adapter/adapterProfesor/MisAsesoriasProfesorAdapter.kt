@@ -26,14 +26,14 @@ class MisAsesoriasProfesorAdapter(
 
         val tviCursoAsesoria: TextView
         val tviSeccionAsesoria: TextView
-
-        val tviListaAsesoria: TextView
-
+        val tvihorario: TextView
+        val tviDia: TextView
         init {
 
             tviCursoAsesoria = view.findViewById(R.id.curso_asesoria)
+            tviDia=view.findViewById(R.id.dia_asesoria)
             tviSeccionAsesoria = view.findViewById(R.id.seccion_asesoria)
-            tviListaAsesoria = view.findViewById(R.id.dias_asesorias)
+            tvihorario = view.findViewById(R.id.horario_asesoria)
             view.setOnClickListener(this)
         }
 
@@ -56,7 +56,9 @@ class MisAsesoriasProfesorAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.tviCursoAsesoria.text = ListAsesoriasProfesor[position].nombreCurso
         holder.tviSeccionAsesoria.text = "Sección: ${ListAsesoriasProfesor[position].seccion}"
-        holder.tviListaAsesoria.text = ListAsesoriasProfesor[position].asesorias
+        holder.tviDia.text = "Días: ${ListAsesoriasProfesor[position].dia}"
+        holder.tvihorario.text = "Horarios: ${ListAsesoriasProfesor[position].horario}"
+
     }
 
     override fun getItemCount(): Int {

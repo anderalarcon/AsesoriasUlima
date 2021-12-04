@@ -2,6 +2,7 @@ package pe.edu.ulima.pm.asesoriasulima.fragments.profesor
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,8 +15,9 @@ import pe.edu.ulima.pm.asesoriasulima.adapter.adapterProfesor.MisAsesoriasProfes
 import pe.edu.ulima.pm.asesoriasulima.fragments.AsesoriasAlumnoFragment
 import pe.edu.ulima.pm.asesoriasulima.model.Asesorias
 import pe.edu.ulima.pm.asesoriasulima.model.AsesoriasAlumno
+import pe.edu.ulima.pm.asesoriasulima.model.AsesoriasManager
 
-class MisAsesoriasFragment:Fragment() {
+class MisAsesoriasFragment(var cod: String):Fragment() {
     interface interfaceAsesoriasProfesor{
         fun ChangeToRegistrarNuevaAsesoria()
     }
@@ -39,22 +41,23 @@ class MisAsesoriasFragment:Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        val listaAsesorias = arrayListOf<Asesorias>()
-        listaAsesorias.add(Asesorias(1,"Programación móvil","801","Hernan Quintana","lunes 9 - 10"))
-        listaAsesorias.add(Asesorias(2,"Programación móvil","802","Hernan Quintana","miercoles 9 - 10"))
 
         val btnRegistrar=view.findViewById<Button>(R.id.RegistrarAsesoriaProfesor)
         btnRegistrar.setOnClickListener{
             listener!!.ChangeToRegistrarNuevaAsesoria()
         }
-        val rviAsesorias = view.findViewById<RecyclerView>(R.id.ReciclerMisAsesoriasProfesor)
-        rviAsesorias.adapter = MisAsesoriasProfesorAdapter(
-            listaAsesorias,
-            this
-        ){asesoria : Asesorias ->
-            println("xd")
 
-        }
+        val rviAsesorias = view.findViewById<RecyclerView>(R.id.ReciclerMisAsesoriasProfesor)
+        AsesoriasManager.instance.getAsesoriasFirebase(cod,{res:List<Asesorias>->
+            rviAsesorias.adapter=MisAsesoriasProfesorAdapter(res,this){
+                asesoria:Asesorias->
+                println("qwe")
+            }
+        },{error->
+            Log.e("MisAsesoriasFragment",error)
+        })
+
+
 
     }
 }

@@ -41,4 +41,31 @@ class AsesoriasManager {
             }
     }
 
+    fun getAsesoriasFirebase(
+        codigo_profe: String,
+        callbackOK: (List<Asesorias>) -> Unit,
+        callbackError: (String) -> Unit
+    ) {
+        dbFirebase.collection("asesorias").whereEqualTo("codigo_profe",codigo_profe).get().addOnSuccessListener { res ->
+            val asesorias = arrayListOf<Asesorias>()
+            for (document in res) {
+                val asesoria = Asesorias(
+                    document.id.toLong(),
+                    document.data["curso"] as String?,
+                    document.data["dia"] as String?,
+                    document.data["horario"] as String?,
+                    document.data["seccion"] as String?,
+                    document.data["codigo_profe"] as String?,
+                    document.data["url"] as String?,
+
+                )
+                asesorias.add(asesoria)
+
+            }
+            callbackOK(asesorias)
+        }.addOnFailureListener {
+            callbackError(it.message!!)
+        }
+    }
+
 }

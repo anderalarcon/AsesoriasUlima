@@ -40,8 +40,8 @@ class DetalleAsesoriaAlumnoFragment (val Asesoria : Asesorias):Fragment() {
 
         view.findViewById<TextView>(R.id.tviCursoAsesoriaAlumnoDETALLE).setText(Asesoria.nombreCurso)
         view.findViewById<TextView>(R.id.tviSeccionAsesoriaAlumnoDETALLE).setText("Sección: ${Asesoria.seccion}")
-        view.findViewById<TextView>(R.id.tviProfesorAsesoriaAlumnoDETALLE).setText("Profesor: ${Asesoria.profesor}")
-        view.findViewById<TextView>(R.id.tviListaAsesoriaAlumnoDETALLE).setText(Asesoria.asesorias)
+      /*  view.findViewById<TextView>(R.id.tviProfesorAsesoriaAlumnoDETALLE).setText("Profesor: ${Asesoria.profesor}")
+        view.findViewById<TextView>(R.id.tviListaAsesoriaAlumnoDETALLE).setText(Asesoria.asesorias)*/
 
         val butRegistrar = view.findViewById<Button>(R.id.butRegistrarAsesoria)
         val butRegresarAsesorias = view.findViewById<Button>(R.id.butVolverAsesorias)

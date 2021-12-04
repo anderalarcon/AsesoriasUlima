@@ -61,8 +61,8 @@ class AsesoriasAlumnosAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.tviCursoAsesoriaAlumno.text = ListAsesoriasAlumno[position].nombreCurso
         holder.tviSeccionAsesoriaAlumno.text = "Sección: ${ListAsesoriasAlumno[position].seccion}"
-        holder.tviProfesorAsesoriaAlumno.text = "Profesor: ${ListAsesoriasAlumno[position].profesor}"
-        holder.tviListaAsesoriaAlumno.text = ListAsesoriasAlumno[position].asesorias
+  /*      holder.tviProfesorAsesoriaAlumno.text = "Profesor: ${ListAsesoriasAlumno[position].profesor}"
+        holder.tviListaAsesoriaAlumno.text = ListAsesoriasAlumno[position].asesorias*/
 
     }
 

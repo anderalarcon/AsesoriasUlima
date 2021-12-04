@@ -4,4 +4,5 @@
     <string name="alumno_menu_registros">Mis registros</string>
     <string name="alumno_menu_cuenta">Mi Cuenta</string>
     <string name="alumno_menu_salir">Salir</string>
+    <string name="select">Selecciona el horario</string>
 </resources>

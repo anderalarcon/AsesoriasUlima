@@ -2,8 +2,10 @@ package pe.edu.ulima.pm.asesoriasulima
 
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.Window
 import android.widget.Button
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
@@ -19,17 +21,20 @@ class MainActivityProfesor:AppCompatActivity(),MisAsesoriasFragment.interfaceAse
     var pantallaFragment: Int = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         pantallaFragment = intent.getBundleExtra("data")?.getInt("pantallaFragment")!!
-        println("codigo" + intent.getBundleExtra("data")?.getString("codigo")!!)
+        println("codigo: " + intent.getBundleExtra("data")?.getString("codigo")!!)
+        var codigo:String=intent.getBundleExtra("data")?.getString("codigo")!!
         println("pantalla: " + pantallaFragment)
         super.onCreate(savedInstanceState)
         title="Asesorías Ulima Profesores"
+        requestWindowFeature(Window.FEATURE_NO_TITLE)
+        getSupportActionBar()?.hide()
         setContentView(R.layout.activity_main_profesor)
 
 
 
         fragments.add(MisAsesoriasFragment())
         fragments.add(MiCuentaFragment())
-        fragments.add(RegistrarAsesoriaFragment())
+        fragments.add(RegistrarAsesoriaFragment(codigo))
 
 
         // Configurando NavigationView

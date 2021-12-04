@@ -60,19 +60,16 @@ class AsesoriasAlumnoFragment: Fragment() {
             listaAsesorias,
             this@AsesoriasAlumnoFragment
         ){Asesorias : Asesorias ->
-            println("xd")
             listener?.ChangeVerDetalle(Asesorias)
         }
 
         sviCursoAlumnoBuscar.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
-                println("xd")
                 return true
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
                if(newText!!.isNotEmpty()){
-                   print("ENTRO ACA")
                    listaAsesorias.clear()
                    var search = newText.toLowerCase(Locale.getDefault())
 
@@ -84,7 +81,6 @@ class AsesoriasAlumnoFragment: Fragment() {
 
                    }
                }else{
-                   println("RECREAR COSO")
                    listaAsesorias.clear()
                    listaAsesorias.addAll(listasAsesoriasFiltrado)
                    rviAsesorias.adapter!!.notifyDataSetChanged()

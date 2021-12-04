@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.navigation.NavigationView
 import pe.edu.ulima.pm.asesoriasulima.fragments.*
 import pe.edu.ulima.pm.asesoriasulima.fragments.profesor.MisAsesoriasFragment
+import pe.edu.ulima.pm.asesoriasulima.model.Asesorias
 import pe.edu.ulima.pm.asesoriasulima.model.AsesoriasAlumno
 import pe.edu.ulima.pm.asesoriasulima.model.CuentaManager
 
@@ -24,10 +25,10 @@ class MainActivity : AppCompatActivity(),
     private lateinit var dlaMain: DrawerLayout
     var pantallaFragment: Int = 0
     var IdDocumentoUser: Long = 0
-    private lateinit var AsesoriaGlobal : AsesoriasAlumno
+    private lateinit var AsesoriaGlobal : Asesorias
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        AsesoriaGlobal = AsesoriasAlumno(1,"","","","")
+        AsesoriaGlobal = Asesorias(1,"","","","")
         pantallaFragment = intent.getBundleExtra("data")?.getInt("pantallaFragment")!!
        println("codigo" + intent.getBundleExtra("data")?.getString("codigo")!!)
         println("pantalla: " + pantallaFragment)
@@ -104,7 +105,7 @@ class MainActivity : AppCompatActivity(),
         ft.commit()
     }
 
-    private fun changeDetalleAsesoriaAlumnoFragmentCONINFO(Asesoria : AsesoriasAlumno) {
+    private fun changeDetalleAsesoriaAlumnoFragmentCONINFO(Asesoria : Asesorias) {
         AsesoriaGlobal = Asesoria
         val fragment = DetalleAsesoriaAlumnoFragment(Asesoria)
         val ft = supportFragmentManager.beginTransaction()
@@ -128,7 +129,7 @@ class MainActivity : AppCompatActivity(),
 
     }
 
-    override fun ChangeVerDetalle(Asesoria: AsesoriasAlumno) {
+    override fun ChangeVerDetalle(Asesoria: Asesorias) {
         AsesoriaGlobal = Asesoria
         println(AsesoriaGlobal)
         changeDetalleAsesoriaAlumnoFragmentCONINFO(Asesoria)

@@ -9,9 +9,10 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import pe.edu.ulima.pm.asesoriasulima.R
+import pe.edu.ulima.pm.asesoriasulima.model.Asesorias
 import pe.edu.ulima.pm.asesoriasulima.model.AsesoriasAlumno
 
-class DetalleAsesoriaAlumnoFragment (val Asesoria : AsesoriasAlumno):Fragment() {
+class DetalleAsesoriaAlumnoFragment (val Asesoria : Asesorias):Fragment() {
 
     interface interfaceDetalleALumnos{
         fun ChangeRegistrarAsesoriaAlumno()

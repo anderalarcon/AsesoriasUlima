@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity(),
     private lateinit var AsesoriaGlobal : Asesorias
 
     override fun onCreate(savedInstanceState: Bundle?) {
-  /*      AsesoriaGlobal = Asesorias(1,"","","","")*/
+        AsesoriaGlobal = Asesorias(1,"","","","","","")
         pantallaFragment = intent.getBundleExtra("data")?.getInt("pantallaFragment")!!
        println("codigo" + intent.getBundleExtra("data")?.getString("codigo")!!)
         println("pantalla: " + pantallaFragment)

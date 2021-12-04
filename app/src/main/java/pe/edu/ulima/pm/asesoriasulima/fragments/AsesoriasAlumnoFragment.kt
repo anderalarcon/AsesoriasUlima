@@ -7,12 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 //import androidx.appcompat.widget.SearchView
 import android.widget.SearchView;
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import pe.edu.ulima.pm.asesoriasulima.R
 import pe.edu.ulima.pm.asesoriasulima.adapter.AsesoriasAlumnosAdapter
 import pe.edu.ulima.pm.asesoriasulima.model.Asesorias
 import pe.edu.ulima.pm.asesoriasulima.model.AsesoriasAlumno
+import pe.edu.ulima.pm.asesoriasulima.model.AsesoriasManager
 import java.util.*
 
 class AsesoriasAlumnoFragment: Fragment() {
@@ -42,8 +44,9 @@ class AsesoriasAlumnoFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-   /*     val listaAsesorias = arrayListOf<Asesorias>()
+        val listaAsesorias = arrayListOf<Asesorias>()
         var listasAsesoriasFiltrado = arrayListOf<Asesorias>()
+        /*
         listaAsesorias.add(Asesorias(1,"Programación móvil","801","Hernan Quintana","lunes 9 - 10"))
         listaAsesorias.add(Asesorias(2,"Ingenieria de SW II","801","Nina Hanco","miercoles 9 - 10"))
         listasAsesoriasFiltrado.addAll(listaAsesorias)*/
@@ -55,13 +58,21 @@ class AsesoriasAlumnoFragment: Fragment() {
 
 
 
-/*        val rviAsesorias = view.findViewById<RecyclerView>(R.id.rviAsesoriasAlumnos)
-        rviAsesorias.adapter = AsesoriasAlumnosAdapter(
-            listaAsesorias,
-            this@AsesoriasAlumnoFragment
-        ){Asesorias : Asesorias ->
-            listener?.ChangeVerDetalle(Asesorias)
-        }
+       val rviAsesorias = view.findViewById<RecyclerView>(R.id.rviAsesoriasAlumnos)
+        AsesoriasManager.instance.getAsesoriasFirebaseAlumno({ res : List<Asesorias> ->
+            listaAsesorias.addAll(res)
+            listasAsesoriasFiltrado.addAll(listaAsesorias)
+            rviAsesorias.adapter = AsesoriasAlumnosAdapter(
+                listaAsesorias,
+                this@AsesoriasAlumnoFragment
+            ){Asesorias : Asesorias ->
+                listener?.ChangeVerDetalle(Asesorias)
+            }
+
+        }, { error ->
+            //Log.e("Product")
+            Toast.makeText(activity, "MALASO:" + error, Toast.LENGTH_SHORT).show()
+        })
 
         sviCursoAlumnoBuscar.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
@@ -83,13 +94,13 @@ class AsesoriasAlumnoFragment: Fragment() {
                }else{
                    listaAsesorias.clear()
                    listaAsesorias.addAll(listasAsesoriasFiltrado)
-                   rviAsesorias.adapter!!.notifyDataSetChanged()
+                   rviAsesorias.adapter?.notifyDataSetChanged()
                }
 
                 return true
             }
-        }*/
-       /* )*/
+        }
+        )
 
 
 

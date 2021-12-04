@@ -1,8 +1,9 @@
 <resources>
-    <string name="app_name">AsesoriasUlima</string>
+    <string name="app_name">Asesorias Ulima Profesores</string>
     <string name="alumno_menu_asesorias">Asesorias</string>
     <string name="alumno_menu_registros">Mis registros</string>
     <string name="alumno_menu_cuenta">Mi Cuenta</string>
     <string name="alumno_menu_salir">Salir</string>
     <string name="select">Selecciona el horario</string>
+    <string name="hyperlink">Enlace a Zoom <a name="qwe" href="https://www.youtube.com/watch?v=tL9fCKC2lNA">Ir</a> </string>
 </resources>

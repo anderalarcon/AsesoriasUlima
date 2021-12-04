@@ -23,7 +23,7 @@
                 android:layout_gravity="center"
                 android:fontFamily="@font/montserrat_bold"
                 android:text="Mis Asesorías"
-                android:textColor="#FF6600"
+                android:textColor="@color/black"
 
                 android:textSize="25dp">
 

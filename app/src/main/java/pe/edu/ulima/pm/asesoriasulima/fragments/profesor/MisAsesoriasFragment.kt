@@ -20,7 +20,10 @@ import pe.edu.ulima.pm.asesoriasulima.model.AsesoriasManager
 class MisAsesoriasFragment(var cod: String):Fragment() {
     interface interfaceAsesoriasProfesor{
         fun ChangeToRegistrarNuevaAsesoria()
+        fun onSelectCardAsesoriaProfesor(cardAsesoria:Asesorias)
     }
+
+
 
     private var listener: interfaceAsesoriasProfesor?= null
 
@@ -51,7 +54,8 @@ class MisAsesoriasFragment(var cod: String):Fragment() {
         AsesoriasManager.instance.getAsesoriasFirebase(cod,{res:List<Asesorias>->
             rviAsesorias.adapter=MisAsesoriasProfesorAdapter(res,this){
                 asesoria:Asesorias->
-                println("qwe")
+                listener?.onSelectCardAsesoriaProfesor(asesoria)
+
             }
         },{error->
             Log.e("MisAsesoriasFragment",error)

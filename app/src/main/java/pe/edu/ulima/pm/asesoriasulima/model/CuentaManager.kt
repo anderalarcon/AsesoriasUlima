@@ -41,4 +41,30 @@ class CuentaManager {
 
 
     }
+
+    fun updateUsuarioProfe(id: Long, NewNombre: String, NewContra: String){
+        if(NewContra.equals("") && !NewNombre.equals("")){
+            dbFirebase.collection("users").document(id.toString())
+                .update("nombre",NewNombre)
+                .addOnSuccessListener { Log.d("CuentaManager", "DocumentSnapshot successfully updated!") }
+                .addOnFailureListener { e -> Log.w("CuentaManager", "Error updating document", e) }
+        } else if(!NewContra.equals("") && NewNombre.equals("")){
+            dbFirebase.collection("users").document(id.toString())
+                .update("password",NewContra)
+                .addOnSuccessListener { Log.d("CuentaManager", "DocumentSnapshot successfully updated!") }
+                .addOnFailureListener { e -> Log.w("CuentaManager", "Error updating document", e) }
+        }else if(NewContra.equals("") && NewNombre.equals("")){
+            println("COMPLETE DATOS")
+        }
+        else{
+            dbFirebase.collection("users").document(id.toString())
+                .update("nombre",NewNombre,"password",NewContra)
+                .addOnSuccessListener { Log.d("CuentaManager", "DocumentSnapshot successfully updated!") }
+                .addOnFailureListener { e -> Log.w("CuentaManager", "Error updating document", e) }
+        }
+
+
+
+    }
+
 }

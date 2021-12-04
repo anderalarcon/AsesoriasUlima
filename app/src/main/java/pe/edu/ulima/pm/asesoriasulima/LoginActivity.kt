@@ -13,8 +13,9 @@ import com.google.gson.Gson
 import pe.edu.ulima.pm.asesoriasulima.model.LoginManager
 import java.io.FileNotFoundException
 import java.util.*
+import kotlin.math.log
 
-data class LoginInfo(val username: String, val LoginDate: Long)
+data class LoginInfo(val username: String, val id:Long)
 class LoginActivity : AppCompatActivity() {
     var pantallaFragment = 1
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,23 +28,26 @@ class LoginActivity : AppCompatActivity() {
 
         var existeYesAlumno = false
         var existeYesProfe = false
+        var aux:Long=0
 
 
-        var idLongGlobal : Long = 0
+        var idLongGlobal: Long = 0
 
-     /* if (isLoguedInterno()) {//pasar directamente al main activity
-            val username = getLoginUsernameInterno()
+        if (isLoguedInternoYesProfe()) {//pasar directamente al main activity
+            println("Es profe")
+            /* val username = getLoginUsernameInterno()*/
+            val intent: Intent = Intent()
+            intent.setClass(this, MainActivityProfesor::class.java) //pasamos next activity
+            startActivity(intent)
+        }
+        if (isLoguedInternoYesAlumno()) {
+            println("Es profe")
+            /* val username = getLoginUsernameInterno()*/
             val intent: Intent = Intent()
             intent.setClass(this, MainActivity::class.java) //pasamos next activity
-            startActivity(intent)*/
+            startActivity(intent)
+        }
 
-   /* if (isLoguedInterno()) {//pasar directamente al main activity
-          println("YA SE HABIA LOGUEADO")
-            val codigo= getLoginCodigoInterno()
-            changeToMainActivityProfesor(codigo)
-
-        }*/
-    /*hola*/
         btnIngresar.setOnClickListener {
             if (findViewById<EditText>(R.id.etcodigoLogin).text.toString() != "" && findViewById<EditText>(
                     R.id.etpasswordLogin
@@ -58,35 +62,37 @@ class LoginActivity : AppCompatActivity() {
                         ) {
                             existeYesAlumno = true
                             idLongGlobal = i.id
+                            aux=i.id
                         } else if (i.codigo == findViewById<EditText>(R.id.etcodigoLogin).text.toString() && i.password == findViewById<EditText>(
                                 R.id.etpasswordLogin
                             ).text.toString() && i.rol == "Profesor"
                         ) {
                             existeYesProfe = true
                             idLongGlobal = i.id
+                            aux =i.id
                         }
                     }
                     if (existeYesAlumno) {
-                        almacenarAfterLogin(findViewById<EditText>(R.id.etcodigoLogin).text.toString())
+                        almacenarAfterLoginAlumno(findViewById<EditText>(R.id.etcodigoLogin).text.toString())
                         pantallaFragment = 1
                         val bundle: Bundle = Bundle()//Almacenamos data
                         bundle.putInt("pantallaFragment", pantallaFragment)
-                        bundle.putString("codigo", findViewById<EditText>(R.id.etcodigoLogin).text.toString())
-                        bundle.putLong("id",idLongGlobal)
+                        bundle.putString(
+                            "codigo",
+                            findViewById<EditText>(R.id.etcodigoLogin).text.toString()
+                        )
+                        bundle.putLong("id", idLongGlobal)
                         intent.putExtra("data", bundle)
                         intent.setClass(this, MainActivity::class.java) //pasamos next activity
                         startActivity(intent)
                         Toast.makeText(this, "Bienvenido Alumno", Toast.LENGTH_SHORT)
                             .show()
                     } else if (existeYesProfe) {
-                        pantallaFragment = 2
-                        val bundle: Bundle = Bundle()//Almacenamos data
-                        almacenarAfterLogin(findViewById<EditText>(R.id.etcodigoLogin).text.toString())
-                        bundle.putInt("pantallaFragment", pantallaFragment)
-                        bundle.putString("codigo", findViewById<EditText>(R.id.etcodigoLogin).text.toString())
-                        bundle.putLong("id",idLongGlobal)
-                        intent.putExtra("data", bundle)
-                        intent.setClass(this, MainActivityProfesor::class.java) //pasamos next activity
+                        almacenarAfterLoginProfe(findViewById<EditText>(R.id.etcodigoLogin).text.toString(),aux)
+                        intent.setClass(
+                            this,
+                            MainActivityProfesor::class.java
+                        ) //pasamos next activity
                         startActivity(intent)
                         Toast.makeText(this, "Bienvenido Profe", Toast.LENGTH_SHORT)
                             .show()
@@ -115,7 +121,7 @@ class LoginActivity : AppCompatActivity() {
 
     }
 
-    private fun changeToMainActivityProfesor(codigo:String) {
+    private fun changeToMainActivityProfesor(codigo: String) {
         val intent: Intent = Intent()
         //siempre que nos pide un context , poner this  y a donde quiero ir
         intent.setClass(this, MainActivityProfesor::class.java)
@@ -128,29 +134,64 @@ class LoginActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun almacenarAfterLogin(codigo: String) {
+    fun almacenarAfterLoginProfe(codigo: String,IdField:Long) {
+        val gson = Gson()
+        val logininfo = LoginInfo(codigo, IdField)
+
+        //guardamos como archivo
+        openFileOutput("Login_infoProfe.json", Context.MODE_PRIVATE).use {
+            it.write(gson.toJson(logininfo).toByteArray(Charsets.UTF_8))
+
+        }
+    }
+
+    fun almacenarAfterLoginAlumno(codigo: String) {
         val gson = Gson()
         val logininfo = LoginInfo(codigo, Date().time)
         //guardamos como archivo
-        openFileOutput("Login_info.json", Context.MODE_PRIVATE).use {
+        openFileOutput("Login_infoAlumno.json", Context.MODE_PRIVATE).use {
             it.write(gson.toJson(logininfo).toByteArray(Charsets.UTF_8))
         }
     }
 
 
-    private fun isLoguedInterno(): Boolean {
-        var cadena: String = ""
+    private fun isLoguedInternoYesProfe(): Boolean {
+        var logueado = false
+        var cadenaprofe: String = ""
+
 
         try {
-            openFileInput("Login_info.json").use {
+            openFileInput("Login_infoProfe.json").use {
                 val byteArray = it.readBytes()
-                cadena = String(byteArray)
-                Log.i("LoginActivity", cadena)
+                cadenaprofe = String(byteArray)
+                Log.i("LoginActivity", cadenaprofe)
+
             }
+            logueado = true
         } catch (fnfe: FileNotFoundException) {
-            return false
+            println("ENTRO EN CATCH")
         }
-        return true
+        return logueado
+
+    }
+
+    private fun isLoguedInternoYesAlumno(): Boolean {
+        var logueado = false
+        var cadenaprofe: String = ""
+
+
+        try {
+            openFileInput("Login_infoAlumno.json").use {
+                val byteArray = it.readBytes()
+                cadenaprofe = String(byteArray)
+                Log.i("LoginActivity", cadenaprofe)
+
+            }
+            logueado = true
+        } catch (fnfe: FileNotFoundException) {
+            println("ENTRO EN CATCH")
+        }
+        return logueado
 
     }
 

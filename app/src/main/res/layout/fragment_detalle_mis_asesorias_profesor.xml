@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvinombreCursoDetalleProfesor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/montserrat_extrabold"
+        android:gravity="center"
+        android:text="Programación Movil"
+        android:textColor="@color/black"
+        android:textSize="35dp"></TextView>
+
+
+    <TextView
+        android:id="@+id/tviSeccionDetaleProfesor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/tiemposheadline_bold"
+        android:padding="10dp"
+        android:text="Seccion: 801"
+        android:textSize="20dp">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/tviEnlanceAZOOM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Enlacen a zoom url"
+        android:textSize="20dp">
+
+    </TextView>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="Lista de Alumnos: "
+            android:textSize="23dp">
+
+        </TextView>
+
+
+    </LinearLayout>
+
+    <!--   <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="0dp"
+           android:layout_weight="1"
+           android:gravity="center"
+           android:orientation="vertical">
+
+
+
+           <Button
+               android:id="@+id/btnRegistrarse"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center_vertical|bottom"
+               android:layout_marginLeft="10dp"
+               android:layout_marginRight="10dp"
+               android:fontFamily="@font/montserrat_bold"
+               android:backgroundTint="#fd671a"
+               android:text="Registrarse"></Button>
+
+       </LinearLayout>-->
+
+</LinearLayout>

@@ -39,20 +39,22 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="8dp">
+        <!--
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:text="(*) Fecha: "
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
-        <TextView
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:text="(*) Fecha: "
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
-        <EditText
-            android:id="@+id/eteFechaAsesoria"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="date"
-            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+                <EditText
+                    android:id="@+id/eteFechaAsesoria"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="date"
+                    tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+                    -->
 
     </LinearLayout>
 

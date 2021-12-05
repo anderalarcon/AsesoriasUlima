@@ -6,10 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import androidx.fragment.app.Fragment
 import pe.edu.ulima.pm.asesoriasulima.R
+import pe.edu.ulima.pm.asesoriasulima.model.Asesorias
+import pe.edu.ulima.pm.asesoriasulima.model.AsesoriasManager
+import pe.edu.ulima.pm.asesoriasulima.model.asistente
 
-class CrearAsesoriaAlumnoFragment:Fragment() {
+class CrearAsesoriaAlumnoFragment(val Asesoriaxd: Asesorias, val codigoAlumno: String):Fragment() {
     interface interfaceRegistroALumnos{
         fun ConfirmarAsesoria()
         fun RegresaDetalle()
@@ -30,13 +34,23 @@ class CrearAsesoriaAlumnoFragment:Fragment() {
         return inflater.inflate(R.layout.fragment_registro_asesoria_alumno, container, false)
     }
 
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        println("CODIGO ASESORIA: " + Asesoriaxd.id.toString())
+        println("CODIGO ALUMNO : " + codigoAlumno)
+
+
+
         val butConfirmar = view.findViewById<Button>(R.id.butConfirmarAsesoriaAlumno)
         val butRegresarDetalles = view.findViewById<Button>(R.id.butRegresarDetalleAsesoria)
+        val eteMotivo = view.findViewById<EditText>(R.id.eteMotivoAsesoria)
+
 
         butConfirmar.setOnClickListener{
+            AsesoriasManager.instance.RegistrarAlumnoEnAsesoria(Asesoriaxd.id!!.toString(), asistente(codigoAlumno,eteMotivo.text.toString()) /*codigoAlumno,eteMotivo.text.toString()*/)
             listener?.ConfirmarAsesoria()
         }
 

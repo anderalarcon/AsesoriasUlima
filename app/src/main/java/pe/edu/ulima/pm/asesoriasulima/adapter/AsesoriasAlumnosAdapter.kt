@@ -62,7 +62,7 @@ class AsesoriasAlumnosAdapter(
         holder.tviCursoAsesoriaAlumno.text = ListAsesoriasAlumno[position].nombreCurso
         holder.tviSeccionAsesoriaAlumno.text = "Sección: ${ListAsesoriasAlumno[position].seccion}"
         holder.tviProfesorAsesoriaAlumno.text = "Profesor: ${ListAsesoriasAlumno[position].codigo_profe}"
-        holder.tviListaAsesoriaAlumno.text = ListAsesoriasAlumno[position].horario + ", " + ListAsesoriasAlumno[position].dia
+        holder.tviListaAsesoriaAlumno.text = "Asesoria: " + ListAsesoriasAlumno[position].dia + ", " + ListAsesoriasAlumno[position].horario
 
     }
 

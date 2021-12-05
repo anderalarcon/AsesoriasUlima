@@ -1,5 +1,6 @@
 package pe.edu.ulima.pm.asesoriasulima
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -27,6 +28,7 @@ class MainActivity : AppCompatActivity(),
     private lateinit var dlaMain: DrawerLayout
     var pantallaFragment: Int = 0
     var IdDocumentoUser: Long = 0
+    //var idAsesorias : Long = 0
     private lateinit var AsesoriaGlobal : Asesorias
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,7 +41,7 @@ class MainActivity : AppCompatActivity(),
             fragments.add(RegistroAlumnosFragment())
             fragments.add(CuentaFragment())
             fragments.add(DetalleAsesoriaAlumnoFragment(AsesoriaGlobal))
-            fragments.add(CrearAsesoriaAlumnoFragment())
+            fragments.add(CrearAsesoriaAlumnoFragment(AsesoriaGlobal,""))
 
             // Configurando NavigationView
             val nviMain = findViewById<NavigationView>(R.id.nviMainAlumnos)
@@ -53,8 +55,7 @@ class MainActivity : AppCompatActivity(),
                 } else if (menuItem.itemId == R.id.menCuenta) {
                     changeCuentaFragment()
                 }else if(menuItem.itemId == R.id.menAlumnosSalir){
-                    finish()
-                    Toast.makeText(this, "Sesión finalizada", Toast.LENGTH_SHORT).show()
+                    SalirAlumno()
                     //falta borrar JSON interno
                 }
 
@@ -69,6 +70,21 @@ class MainActivity : AppCompatActivity(),
 
 
 
+    }
+
+    private fun SalirAlumno(){
+        try {
+
+            deleteFile("Login_infoAlumno.json")
+            finish()
+            Toast.makeText(this, "Sesión finalizada", Toast.LENGTH_SHORT).show()
+            /*
+            val intent: Intent = Intent()
+            intent.setClass(this, LoginActivity::class.java) //pasamos next activity
+            startActivity(intent)*/
+        }catch (fnfe: FileNotFoundException){
+            println(fnfe)
+        }
     }
 
     private fun changeAlumnosAsesoriasFragment() {
@@ -107,8 +123,8 @@ class MainActivity : AppCompatActivity(),
         ft.commit()
     }
 
-    private fun changeCrearAsesoriaAlumnoFragment() {
-        val fragment = fragments[4]
+    private fun changeCrearAsesoriaAlumnoFragment(Asesoria: Asesorias) {
+        val fragment = CrearAsesoriaAlumnoFragment(Asesoria, getLoginCodigoInternoAlumno().username)
         val ft = supportFragmentManager.beginTransaction()
         ft.replace(R.id.flaContent, fragment)
         ft.commit()
@@ -129,12 +145,17 @@ class MainActivity : AppCompatActivity(),
         changeDetalleAsesoriaAlumnoFragmentCONINFO(Asesoria)
     }
 
-    override fun ChangeRegistrarAsesoriaAlumno() {
-        changeCrearAsesoriaAlumnoFragment()
+    override fun ChangeRegistrarAsesoriaAlumno(Asesoria: Asesorias) {
+        AsesoriaGlobal = Asesoria
+        changeCrearAsesoriaAlumnoFragment(AsesoriaGlobal)
     }
 
     override fun RegresarAsesorias() {
         changeAlumnosAsesoriasFragment()
+    }
+
+    override fun CopiarAsesorias() {
+        Toast.makeText(this, "Copiado en el portapapeles", Toast.LENGTH_SHORT).show()
     }
 
     override fun ConfirmarAsesoria() {

@@ -3,6 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Roger/pro_movil/FINAL/V4/AsesoriasUlima/app/src/main/res/layout/card_asesoria_profesor.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Roger/pro_movil/FINAL/V4/AsesoriasUlima/app/src/main/res/layout/fragment_detalle_asesoria_alumno.xml" value="0.3466476462196862" />
+        <entry key="..\:/Users/Roger/pro_movil/FINAL/V4/AsesoriasUlima/app/src/main/res/layout/fragment_lista_registrados.xml" value="0.3255208333333333" />
+        <entry key="..\:/Users/Roger/pro_movil/FINAL/V4/AsesoriasUlima/app/src/main/res/layout/fragment_mis_asesorias_profesor.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/Roger/pro_movil/FINAL/V4/AsesoriasUlima/app/src/main/res/layout/fragment_registro_asesoria_alumno.xml" value="0.536" />
+        <entry key="..\:/Users/Roger/pro_movil/FINAL/V4/AsesoriasUlima/app/src/main/res/layout/fragment_registros_alumno.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/Roger/pro_movil/FINAL/V4/AsesoriasUlima/app/src/main/res/layout/item_alumnos_registrados.xml" value="0.580814717477004" />
+        <entry key="..\:/Users/Roger/pro_movil/FINAL/V4/AsesoriasUlima/app/src/main/res/layout/item_curso_alumno.xml" value="0.536" />
+        <entry key="..\:/Users/Roger/pro_movil/FINAL/V4/AsesoriasUlima/app/src/main/res/layout/item_registro_alumnos.xml" value="0.264" />
         <entry key="..\:/Users/ander/Desktop/Ulima21-2/ProgramacionMovil/2DAMITAD/Final/app/src/main/res/layout/activity_login.xml" value="0.22" />
         <entry key="..\:/Users/ander/Desktop/Ulima21-2/ProgramacionMovil/2DAMITAD/Final/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/ander/Desktop/Ulima21-2/ProgramacionMovil/2DAMITAD/Final/app/src/main/res/layout/activity_main_profesor.xml" value="0.20520833333333333" />

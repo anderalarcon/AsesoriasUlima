@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:background="@color/gray_248"
+    android:layout_marginBottom="5dp"
+  >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tviOrdenAlumnoDETALLELISTA"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@color/black"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="1. "
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/tviNombreAlumnoDETALLELISTA"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@color/black"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="Roger Alonso Antonio Vega Solís "
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@color/white" />
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tviMotivoAlumnoDETALLELISTA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="Dudas con respecto a el uso de Firebase "
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="#fd671a" />
+
+
+    </LinearLayout>
+
+</RelativeLayout>

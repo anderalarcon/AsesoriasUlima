@@ -49,21 +49,21 @@ class DetalleAsesoriaAlumnoFragment (val Asesoria : Asesorias):Fragment() {
         view.findViewById<TextView>(R.id.tviProfesorAsesoriaAlumnoDETALLE).setText("Profesor: ${Asesoria.codigo_profe}")
         view.findViewById<TextView>(R.id.tviListaAsesoriaAlumnoDETALLE).setText("Asesoria: " + Asesoria.dia  + ", " + Asesoria.horario )
 
-      /* val rviListaRegistrados = view.findViewById<RecyclerView>(R.id.rviListaRegistrados)
-        AsesoriasManager.instance.GetListaAsistentesFirebase({ res : List<asistente> ->
-            rviListaRegistrados.adapter = AsesoriasRegistradosAdapter(
-                res,
-                this,
-            ){asist : asistente ->
-                println(asist)
-            }
+      val rviListaRegistrados = view.findViewById<RecyclerView>(R.id.rviListaRegistrados)
+        AsesoriasManager.instance.getRegistroProfe(
+            Asesoria.id.toString(),
+            {res  ->
 
+            rviListaRegistrados.adapter = AsesoriasRegistradosAdapter(
+                res.asistente,
+                this
+            ){}
         },{ error ->
             //Log.e("Product")
             println(error)
-        },
-            Asesoria.id.toString()
-        )*/
+        }
+
+        )
 
         val butRegistrar = view.findViewById<Button>(R.id.butRegistrarAsesoria)
         val butRegresarAsesorias = view.findViewById<Button>(R.id.butVolverAsesorias)

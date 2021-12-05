@@ -7,30 +7,31 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import pe.edu.ulima.pm.asesoriasulima.R
+import pe.edu.ulima.pm.asesoriasulima.model.Participantes
 import pe.edu.ulima.pm.asesoriasulima.model.RegistroFirebase
 import pe.edu.ulima.pm.asesoriasulima.model.asistente
 
 class AsesoriasRegistradosAdapter(
-    private val ListRegistrados : List<asistente>,
+    private val ListRegistrados : List<HashMap<String,String>>,
     private val fragment: Fragment,
-    private val listener: (asistente) -> Unit
+    private val listener: (Participantes) -> Unit
 
 ) : RecyclerView.Adapter<AsesoriasRegistradosAdapter.ViewHolder>(){
-    class ViewHolder(view: View, val listener: (asistente) -> Unit, val listRegistros: List<asistente>):
+    class ViewHolder(view: View, val listener: (Participantes) -> Unit, val listRegistros: List<HashMap<String,String>>):
         RecyclerView.ViewHolder(view), View.OnClickListener {
 
-            val tviOrdenAlumnoDETALLELISTA: TextView
+            //val tviOrdenAlumnoDETALLELISTA: TextView
             val tviNombreAlumnoDETALLELISTA: TextView
             val tviMotivoAlumnoDETALLELISTA:TextView
 
             init{
-                tviOrdenAlumnoDETALLELISTA = view.findViewById(R.id.tviOrdenAlumnoDETALLELISTA)
+                //tviOrdenAlumnoDETALLELISTA = view.findViewById(R.id.tviOrdenAlumnoDETALLELISTA)
                 tviNombreAlumnoDETALLELISTA = view.findViewById(R.id.tviNombreAlumnoDETALLELISTA)
                 tviMotivoAlumnoDETALLELISTA = view.findViewById(R.id.tviMotivoAlumnoDETALLELISTA)
                 view.setOnClickListener(this)
             }
         override fun onClick(v: View?) {
-            listener(listRegistros[adapterPosition])
+            //listener(listRegistros[adapterPosition])
         }
     }
 
@@ -44,9 +45,9 @@ class AsesoriasRegistradosAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.tviOrdenAlumnoDETALLELISTA.text = position.toString()
-        holder.tviNombreAlumnoDETALLELISTA.text = ListRegistrados[position].codigo
-        holder.tviMotivoAlumnoDETALLELISTA.text = ListRegistrados[position].motivo
+        //holder.tviOrdenAlumnoDETALLELISTA.text = position.toString()
+        holder.tviNombreAlumnoDETALLELISTA.text = ListRegistrados[position]["codigo"]
+        holder.tviMotivoAlumnoDETALLELISTA.text = ListRegistrados[position]["motivo"]
 
     }
 

@@ -1,5 +1,6 @@
 package pe.edu.ulima.pm.asesoriasulima.model
 
+import com.google.firebase.firestore.FieldPath
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -14,10 +15,10 @@ class AsesoriasManager {
     fun registrarAsesoriaEnFirebase(
         curso: String,
         seccion: String,
-        horario:String,
-        codigo_profe:String,
-        dia:String,
-        url:String,
+        horario: String,
+        codigo_profe: String,
+        dia: String,
+        url: String,
         callbackOk: (Long) -> Unit,
         callbackError: (String) -> Unit
     ) {
@@ -30,7 +31,7 @@ class AsesoriasManager {
             "dia" to dia,
             "url" to url
 
-            )
+        )
 
         val asesoriaId = System.currentTimeMillis().toString()
         dbFirebase.collection("asesorias").document(asesoriaId).set(data)
@@ -46,36 +47,38 @@ class AsesoriasManager {
         callbackOK: (List<Asesorias>) -> Unit,
         callbackError: (String) -> Unit
     ) {
-        dbFirebase.collection("asesorias").whereEqualTo("codigo_profe",codigo_profe).get().addOnSuccessListener { res ->
-            val asesorias = arrayListOf<Asesorias>()
-            for (document in res) {
-                val asesoria = Asesorias(
-                    document.id.toLong(),
-                    document.data["curso"] as String?,
-                    document.data["dia"] as String?,
-                    document.data["horario"] as String?,
-                    document.data["seccion"] as String?,
-                    document.data["codigo_profe"] as String?,
-                    document.data["url"] as String?,
+        dbFirebase.collection("asesorias").whereEqualTo("codigo_profe", codigo_profe).get()
+            .addOnSuccessListener { res ->
+                val asesorias = arrayListOf<Asesorias>()
+                for (document in res) {
+                    val asesoria = Asesorias(
+                        document.id.toLong(),
+                        document.data["curso"] as String?,
+                        document.data["dia"] as String?,
+                        document.data["horario"] as String?,
+                        document.data["seccion"] as String?,
+                        document.data["codigo_profe"] as String?,
+                        document.data["url"] as String?,
 
-                )
-                asesorias.add(asesoria)
+                        )
+                    asesorias.add(asesoria)
 
-            }
-            callbackOK(asesorias)
-        }.addOnFailureListener {
+                }
+                callbackOK(asesorias)
+            }.addOnFailureListener {
             callbackError(it.message!!)
         }
     }
 
-    fun getProfeNombew() : String{
-        var auxProfe : String = ""
-        dbFirebase.collection("users").whereEqualTo("codigo", "7020171234").get().addOnSuccessListener { res ->
-            for(document in res){
-                println("PROFE XD: " + document.data["nombre"] as String)
-                auxProfe = document.data["nombre"] as String
+    fun getProfeNombew(): String {
+        var auxProfe: String = ""
+        dbFirebase.collection("users").whereEqualTo("codigo", "7020171234").get()
+            .addOnSuccessListener { res ->
+                for (document in res) {
+                    println("PROFE XD: " + document.data["nombre"] as String)
+                    auxProfe = document.data["nombre"] as String
+                }
             }
-        }
         return auxProfe
     }
 
@@ -86,7 +89,7 @@ class AsesoriasManager {
         /*val capitalCities = dbFirebase.collection("users").whereEqualTo("codigo", "7020171234")
         println("PROFE: " + capitalCities.firestore.)*/
 
-        println("PROFE: "  + getProfeNombew())
+        println("PROFE: " + getProfeNombew())
 
         dbFirebase.collection("asesorias").get().addOnSuccessListener { res ->
             val Asesorias = arrayListOf<Asesorias>()
@@ -105,6 +108,30 @@ class AsesoriasManager {
             }
             callbackOk(Asesorias)
             println(Asesorias)
+        }
+            .addOnFailureListener {
+                callbackError(it.message!!)
+            }
+    }
+
+    fun getRegistroProfe(
+        id_Asesoria:String,
+        callbackOk: (Registro) -> Unit,
+        callbackError: (String) -> Unit
+    ) {
+
+        dbFirebase.collection("registro").whereEqualTo("asesoriaid",id_Asesoria).get().addOnSuccessListener { res ->
+            var Registro:Registro?=null
+            for (doc in res) {
+                val registro = Registro(
+                    doc.id.toLong(),
+                    doc.data["asistente"] as List<HashMap<String,String>>
+                )
+                Registro=registro
+
+            }
+            callbackOk(Registro!!)
+
         }
             .addOnFailureListener {
                 callbackError(it.message!!)

@@ -52,6 +52,7 @@ class MisAsesoriasFragment(var cod: String):Fragment() {
 
         val rviAsesorias = view.findViewById<RecyclerView>(R.id.ReciclerMisAsesoriasProfesor)
         AsesoriasManager.instance.getAsesoriasFirebase(cod,{res:List<Asesorias>->
+            println("ASESORIAS: "+res)
             rviAsesorias.adapter=MisAsesoriasProfesorAdapter(res,this){
                 asesoria:Asesorias->
                 listener?.onSelectCardAsesoriaProfesor(asesoria)

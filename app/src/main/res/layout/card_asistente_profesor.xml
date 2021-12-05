@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tviCodigo_Asistente_Profesor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="20172991"
+            android:textSize="20dp"
+
+
+            android:fontFamily="@font/montserrat_black"
+            android:textColor="#fd671a">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/tviMotivo_Asistente_Profesor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_medium"
+            android:text="Motivo"
+            android:textSize="18dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="@color/black">
+
+        </TextView>
+
+
+
+
+
+    </LinearLayout>
+
+
+
+
+</RelativeLayout>

@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity(),
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AsesoriaGlobal = Asesorias(1,"","","","","","")
-        
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 

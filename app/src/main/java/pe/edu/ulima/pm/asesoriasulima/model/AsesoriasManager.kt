@@ -1,8 +1,12 @@
 package pe.edu.ulima.pm.asesoriasulima.model
 
+<<<<<<< HEAD
 import android.util.Log
 import android.widget.Toast
 import com.google.firebase.firestore.FieldValue
+=======
+import com.google.firebase.firestore.FieldPath
+>>>>>>> b68ec0f761957b6f7b140584b3631e312848cc7a
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -72,6 +76,7 @@ class AsesoriasManager {
                 }
                 callbackOK(asesorias)
             }.addOnFailureListener {
+<<<<<<< HEAD
             callbackError(it.message!!)
         }
     }
@@ -94,11 +99,14 @@ class AsesoriasManager {
             }
             callbackOk(Usuarios)
         }.addOnFailureListener {
+=======
+>>>>>>> b68ec0f761957b6f7b140584b3631e312848cc7a
             callbackError(it.message!!)
         }
 
     }
 
+<<<<<<< HEAD
     fun buscarNombreProfe(Usuarios: List<UsuarioFirebase>, codigo_profe: String): String {
         var usuario = ""
         for (user in Usuarios) {
@@ -107,6 +115,18 @@ class AsesoriasManager {
             }
         }
         return usuario
+=======
+    fun getProfeNombew(): String {
+        var auxProfe: String = ""
+        dbFirebase.collection("users").whereEqualTo("codigo", "7020171234").get()
+            .addOnSuccessListener { res ->
+                for (document in res) {
+                    println("PROFE XD: " + document.data["nombre"] as String)
+                    auxProfe = document.data["nombre"] as String
+                }
+            }
+        return auxProfe
+>>>>>>> b68ec0f761957b6f7b140584b3631e312848cc7a
     }
 
     fun getAsesoriasFirebaseAlumno(
@@ -116,6 +136,7 @@ class AsesoriasManager {
         /*val capitalCities = dbFirebase.collection("users").whereEqualTo("codigo", "7020171234")
         println("PROFE: " + capitalCities.firestore.)*/
 
+<<<<<<< HEAD
         //println("PROFE: "  + getProfeNombew())
 
 
@@ -126,6 +147,9 @@ class AsesoriasManager {
 
         }
         )
+=======
+        println("PROFE: " + getProfeNombew())
+>>>>>>> b68ec0f761957b6f7b140584b3631e312848cc7a
 
         dbFirebase.collection("asesorias").get().addOnSuccessListener { res ->
             val Asesorias = arrayListOf<Asesorias>()
@@ -153,6 +177,7 @@ class AsesoriasManager {
             }
     }
 
+<<<<<<< HEAD
     fun GetRegistrosFirebase(
         callbackOk: (List<RegistroFirebase>) -> Unit,
         callbackError: (String) -> Unit,
@@ -350,4 +375,30 @@ class AsesoriasManager {
             }
 
     }
+=======
+    fun getRegistroProfe(
+        id_Asesoria:String,
+        callbackOk: (Registro) -> Unit,
+        callbackError: (String) -> Unit
+    ) {
+
+        dbFirebase.collection("registro").whereEqualTo("asesoriaid",id_Asesoria).get().addOnSuccessListener { res ->
+            var Registro:Registro?=null
+            for (doc in res) {
+                val registro = Registro(
+                    doc.id.toLong(),
+                    doc.data["asistente"] as List<HashMap<String,String>>
+                )
+                Registro=registro
+
+            }
+            callbackOk(Registro!!)
+
+        }
+            .addOnFailureListener {
+                callbackError(it.message!!)
+            }
+    }
+
+>>>>>>> b68ec0f761957b6f7b140584b3631e312848cc7a
 }

@@ -134,45 +134,41 @@ class AsesoriasManager {
         callbackOk: (List<Asesorias>) -> Unit,
         callbackError: (String) -> Unit
     ) {
-        /*val capitalCities = dbFirebase.collection("users").whereEqualTo("codigo", "7020171234")
-        println("PROFE: " + capitalCities.firestore.)*/
-
-        //println("PROFE: "  + getProfeNombew())
-
-
         getProfeNombre({ res: List<UsuarioFirebase> ->
             UsuariosGlobal.addAll(res)
+            println("PROFE: " + getProfeNombew())
+            println("LISTA USUARIOS: " + UsuariosGlobal)
+            dbFirebase.collection("asesorias").get().addOnSuccessListener { res ->
+                val Asesorias = arrayListOf<Asesorias>()
+
+                for (document in res) {
+                    val asesoria = Asesorias(
+                        document.id.toLong(),
+                        document.data["curso"] as String?,
+                        document.data["dia"] as String?,
+                        document.data["horario"] as String?,
+                        document.data["seccion"] as String?,
+                        buscarNombreProfe(
+                            UsuariosGlobal,
+                            document.data["codigo_profe"].toString()
+                        ) as String?,
+                        document.data["url"] as String?
+                    )
+                    Asesorias.add(asesoria)
+                }
+                callbackOk(Asesorias)
+                println(Asesorias)
+            }
+                .addOnFailureListener {
+                    callbackError(it.message!!)
+                }
         }, { error ->
             println(error)
 
         }
         )
 
-        println("PROFE: " + getProfeNombew())
-        dbFirebase.collection("asesorias").get().addOnSuccessListener { res ->
-            val Asesorias = arrayListOf<Asesorias>()
 
-            for (document in res) {
-                val asesoria = Asesorias(
-                    document.id.toLong(),
-                    document.data["curso"] as String?,
-                    document.data["dia"] as String?,
-                    document.data["horario"] as String?,
-                    document.data["seccion"] as String?,
-                    buscarNombreProfe(
-                        UsuariosGlobal,
-                        document.data["codigo_profe"].toString()
-                    ) as String?,
-                    document.data["url"] as String?
-                )
-                Asesorias.add(asesoria)
-            }
-            callbackOk(Asesorias)
-            println(Asesorias)
-        }
-            .addOnFailureListener {
-                callbackError(it.message!!)
-            }
     }
 
 

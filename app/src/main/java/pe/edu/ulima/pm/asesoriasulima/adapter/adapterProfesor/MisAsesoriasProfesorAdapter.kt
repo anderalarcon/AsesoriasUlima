@@ -56,8 +56,8 @@ class MisAsesoriasProfesorAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.tviCursoAsesoria.text = ListAsesoriasProfesor[position].nombreCurso
         holder.tviSeccionAsesoria.text = "Sección: ${ListAsesoriasProfesor[position].seccion}"
-        holder.tviDia.text = "Días: ${ListAsesoriasProfesor[position].dia}"
-        holder.tvihorario.text = "Horarios: ${ListAsesoriasProfesor[position].horario}"
+        holder.tviDia.text = "Día: ${ListAsesoriasProfesor[position].dia}"
+        holder.tvihorario.text = "Horario: ${ListAsesoriasProfesor[position].horario}"
 
     }
 

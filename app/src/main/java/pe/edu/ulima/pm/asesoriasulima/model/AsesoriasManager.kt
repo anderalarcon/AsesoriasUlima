@@ -9,6 +9,7 @@ import com.google.firebase.firestore.FieldPath
 
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.protobuf.Empty
 
 class AsesoriasManager {
     companion object {
@@ -377,16 +378,22 @@ class AsesoriasManager {
     ) {
 
         dbFirebase.collection("registro").whereEqualTo("asesoriaid",id_Asesoria).get().addOnSuccessListener { res ->
-            var Registro:Registro?=null
-            for (doc in res) {
-                val registro = Registro(
-                    doc.id.toLong(),
-                    doc.data["asistente"] as List<HashMap<String,String>>
-                )
-                Registro=registro
 
+            if(res.isEmpty){
+                println("No hay nada")
+            }else{
+                var Registro:Registro?=null
+                for (doc in res) {
+                    val registro = Registro(
+                        doc.id.toLong(),
+                        doc.data["asistente"] as List<HashMap<String,String>>
+                    )
+                    Registro=registro
+
+                }
+                callbackOk(Registro!!)
             }
-            callbackOk(Registro!!)
+
 
         }
             .addOnFailureListener {

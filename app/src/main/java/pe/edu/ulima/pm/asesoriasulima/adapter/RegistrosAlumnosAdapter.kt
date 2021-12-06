@@ -1,9 +1,14 @@
 package pe.edu.ulima.pm.asesoriasulima.adapter
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import pe.edu.ulima.pm.asesoriasulima.R
@@ -33,6 +38,15 @@ class RegistrosAlumnosAdapter(
             tviFechaAsesoriaAlumno = view.findViewById(R.id.tviFechaAsesoriaAlumno)
             tviOrdenAlumno = view.findViewById(R.id.tviOrdenAlumno)
             view.setOnClickListener(this)
+            view.findViewById<Button>(R.id.butEnlaceAsesoriaAlumnoREGISTRO).setOnClickListener {
+                val strEnlace = ListRegistros[adapterPosition].enlace
+                val clipboard = itemView.context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager?
+                val clip = ClipData.newPlainText("Copiar el en portatapeles", strEnlace)
+                clipboard!!.setPrimaryClip(clip)
+                val myToast: Toast = Toast.makeText(itemView.context, "Copiado en el portapapeles", Toast.LENGTH_LONG)
+                myToast.show()
+
+            }
         }
 
         override fun onClick(p0: View?) {

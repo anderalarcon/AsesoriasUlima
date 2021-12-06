@@ -19,8 +19,10 @@ class AsesoriasManager {
     }
 
     val UsuariosGlobal = arrayListOf<UsuarioFirebase>()
+    val AsesoriasGlobal = arrayListOf<Asesorias>()
     val registrosGlobal = arrayListOf<RegistroFirebase>()
-    val registrosGlobalTODOS = arrayListOf<RegistroFirebase>()
+    val registrosGlobalTODOS = arrayListOf<RegistroAsistencia>()
+    val RegistrosAUX = arrayListOf<RegistroAsistencia>()
 
     private val dbFirebase = Firebase.firestore
 
@@ -332,7 +334,7 @@ class AsesoriasManager {
 
      )*/
 
-    fun GetRegistrosAlumnoFirebase(
+    /*fun GetRegistrosAlumnoFirebase(
         callbackOk: (List<RegistrosAlumnos>) -> Unit,
         callbackError: (String) -> Unit
     ) {
@@ -371,7 +373,7 @@ class AsesoriasManager {
                 callbackError(it.message!!)
             }
 
-    }
+    }*/
 
     fun getRegistroProfe(
         id_Asesoria: String,
@@ -418,6 +420,8 @@ class AsesoriasManager {
             .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully deleted!") }
             .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }
 
+
+
 /*
 
         dbFirebase.collection("registro").document()
@@ -427,4 +431,93 @@ class AsesoriasManager {
 
 
     }
+
+    fun getRegistroTODOSfirebase(
+        callbackOk: (List<RegistroAsistencia>) -> Unit,
+        callbackError: (String) -> Unit
+    ) {
+        dbFirebase.collection("registro").get().addOnSuccessListener { res ->
+            var Registro = arrayListOf<RegistroAsistencia>()
+            for (doc in res) {
+                val registro = RegistroAsistencia(
+                    doc.id.toLong(),
+                    doc.data["asesoriaid"] as String,
+                    doc.data["asistente"] as List<HashMap<String,String>>
+                )
+                Registro.add(registro)
+
+            }
+            callbackOk(Registro)
+        }
+            .addOnFailureListener {
+                callbackError(it.message!!)
+            }
+    }
+
+    fun buscarAsesoria(lista : List<Asesorias>, cod_asesoria: String): Asesorias{
+        var asesoria : Asesorias?=null
+        for (doc in lista) {
+            if (doc.id.toString() == cod_asesoria) {
+                asesoria = doc
+            }
+        }
+        return asesoria!!
+    }
+
+    fun GetRegistrosAlumnoFirebase(
+        codigoAlumno : String,
+        callbackOk: (List<RegistrosAlumnos>) -> Unit,
+        callbackError: (String) -> Unit
+    ) {
+        getRegistroTODOSfirebase(
+            {res  ->
+                RegistrosAUX.clear()
+
+                RegistrosAUX.addAll(res)
+                getAsesoriasFirebaseAlumno({res ->
+                    AsesoriasGlobal.clear()
+                    AsesoriasGlobal.addAll(res)
+                    //data class RegistrosAuxiliar(val asesoriaAUX :String, val motivoAUX: String)
+                    val auxAsesorias = arrayListOf<RegistrosAlumnos>()
+                    println("CODIGO ALUMNO: " + codigoAlumno)
+                    var count = 0
+                    for(i in RegistrosAUX){
+
+                        for(j in i.asistente){
+
+                            if (codigoAlumno == j["codigo"].toString()){
+                                println("EL J: " + j)
+                                val auxAsesoria: Asesorias = buscarAsesoria(AsesoriasGlobal,i.asesoriaid)
+                                val auxRegis = RegistrosAlumnos(
+                                    i.asesoriaid.toLong(),
+                                    auxAsesoria.nombreCurso,
+                                    j["motivo"].toString(),
+                                    auxAsesoria.seccion,
+                                    auxAsesoria.codigo_profe,
+                                    auxAsesoria.dia + "," + auxAsesoria.horario,
+                                    "1",
+                                    auxAsesoria.url
+                                )
+                                auxAsesorias.add(auxRegis)
+                            }
+                        }
+                        count.plus(1)
+                    }
+                    println("CONTARAAAR:" + count)
+                    println("ASESORIAS:  " + auxAsesorias)
+                    callbackOk(auxAsesorias)
+                }, { error ->
+                    println(error)}
+                )
+
+            }
+            ,{ error ->
+                //Log.e("Product")
+                println(error)
+            }
+        )
+
+    }
+
+
 }

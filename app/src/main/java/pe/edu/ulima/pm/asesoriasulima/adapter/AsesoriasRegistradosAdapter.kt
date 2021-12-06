@@ -20,12 +20,12 @@ class AsesoriasRegistradosAdapter(
     class ViewHolder(view: View, val listener: (Participantes) -> Unit, val listRegistros: List<HashMap<String,String>>):
         RecyclerView.ViewHolder(view), View.OnClickListener {
 
-            //val tviOrdenAlumnoDETALLELISTA: TextView
+            val tviOrdenAlumnoDETALLELISTA: TextView
             val tviNombreAlumnoDETALLELISTA: TextView
             val tviMotivoAlumnoDETALLELISTA:TextView
 
             init{
-                //tviOrdenAlumnoDETALLELISTA = view.findViewById(R.id.tviOrdenAlumnoDETALLELISTA)
+                tviOrdenAlumnoDETALLELISTA = view.findViewById(R.id.tviOrdenAlumnoDETALLELISTA)
                 tviNombreAlumnoDETALLELISTA = view.findViewById(R.id.tviNombreAlumnoDETALLELISTA)
                 tviMotivoAlumnoDETALLELISTA = view.findViewById(R.id.tviMotivoAlumnoDETALLELISTA)
                 view.setOnClickListener(this)
@@ -45,7 +45,7 @@ class AsesoriasRegistradosAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        //holder.tviOrdenAlumnoDETALLELISTA.text = position.toString()
+        holder.tviOrdenAlumnoDETALLELISTA.text = "${position+1}) "
         holder.tviNombreAlumnoDETALLELISTA.text = ListRegistrados[position]["codigo"]
         holder.tviMotivoAlumnoDETALLELISTA.text = ListRegistrados[position]["motivo"]
 

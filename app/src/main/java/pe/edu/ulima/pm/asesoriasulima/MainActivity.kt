@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity(),
         setContentView(R.layout.activity_main)
 
             fragments.add(AsesoriasAlumnoFragment())
-            fragments.add(RegistroAlumnosFragment())
+            fragments.add(RegistroAlumnosFragment(""))
             fragments.add(CuentaFragment())
             fragments.add(DetalleAsesoriaAlumnoFragment(AsesoriaGlobal))
             fragments.add(CrearAsesoriaAlumnoFragment(AsesoriaGlobal,""))
@@ -95,7 +95,7 @@ class MainActivity : AppCompatActivity(),
     }
 
     private fun changeAlumnosRegistrosFragment() {
-        val fragment = fragments[1]
+        val fragment =  RegistroAlumnosFragment(getLoginCodigoInternoAlumno().username)
         val ft = supportFragmentManager.beginTransaction()
         ft.replace(R.id.flaContent, fragment)
         ft.commit()

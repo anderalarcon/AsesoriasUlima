@@ -10,6 +10,27 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/tiemposheadline_bold"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/black"
+            android:textSize="25dp"
+            android:text="Actualizar Credenciales"
+            >
+
+        </TextView>
+
+        <androidx.constraintlayout.utils.widget.ImageFilterView
+            android:layout_marginTop="25dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/logo_ulima">
+
+        </androidx.constraintlayout.utils.widget.ImageFilterView>
+
     <EditText
         android:id="@+id/eteActualizarNombre"
         android:layout_width="match_parent"

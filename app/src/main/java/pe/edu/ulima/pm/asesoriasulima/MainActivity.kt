@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.graphics.drawable.DrawerArrowDrawable
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
@@ -42,6 +43,12 @@ class MainActivity : AppCompatActivity(),
             fragments.add(CuentaFragment())
             fragments.add(DetalleAsesoriaAlumnoFragment(AsesoriaGlobal))
             fragments.add(CrearAsesoriaAlumnoFragment(AsesoriaGlobal,""))
+
+        //Configurando hamburguer
+        val actionBar=supportActionBar
+
+        actionBar?.setHomeAsUpIndicator(DrawerArrowDrawable(this))
+        actionBar?.setDisplayHomeAsUpEnabled(true)
 
             // Configurando NavigationView
             val nviMain = findViewById<NavigationView>(R.id.nviMainAlumnos)

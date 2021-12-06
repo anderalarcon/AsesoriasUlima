@@ -25,6 +25,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/tiemposheadline_bold"
         android:padding="10dp"
+
         android:textColor="@color/black"
         android:text="Seccion: 801"
         android:textSize="18dp">
@@ -65,10 +66,21 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/ReciclerAsistentes_Profesor"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:itemCount="10"
+            tools:itemCount="3"
             tools:listitem="@layout/card_asistente_profesor" />
+        <Button
+            android:id="@+id/LimpiarAsistentes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Limpiar"
+            >
+
+
+
+        </Button>
 
 
     </LinearLayout>

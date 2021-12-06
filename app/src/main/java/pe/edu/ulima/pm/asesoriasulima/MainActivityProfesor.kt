@@ -25,7 +25,7 @@ import pe.edu.ulima.pm.asesoriasulima.model.AsesoriasManager
 import pe.edu.ulima.pm.asesoriasulima.model.CuentaManager
 import java.io.FileNotFoundException
 
-class MainActivityProfesor:AppCompatActivity(),MisAsesoriasFragment.interfaceAsesoriasProfesor,MiCuentaFragment.interfaceCuentaProfe {
+class MainActivityProfesor:AppCompatActivity(),MisAsesoriasFragment.interfaceAsesoriasProfesor,MiCuentaFragment.interfaceCuentaProfe,DetalleAsesoriaProfesorFragment.interfaceDetalleRegistro {
     private val fragments = mutableListOf<Fragment>()
     private lateinit var dlaMain: DrawerLayout
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -158,6 +158,10 @@ class MainActivityProfesor:AppCompatActivity(),MisAsesoriasFragment.interfaceAse
             Toast.makeText(this, "Datos Actualizados", Toast.LENGTH_SHORT).show()
 
         }
+    }
+
+    override fun changetoMain() {
+        changeToProfesorAsesoriasFragment()
     }
 
 

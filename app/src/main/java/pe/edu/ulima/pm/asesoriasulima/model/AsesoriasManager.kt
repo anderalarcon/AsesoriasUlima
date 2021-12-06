@@ -1,6 +1,7 @@
 package pe.edu.ulima.pm.asesoriasulima.model
 
 
+import android.content.ContentValues.TAG
 import android.util.Log
 import android.widget.Toast
 import com.google.firebase.firestore.FieldValue
@@ -77,8 +78,8 @@ class AsesoriasManager {
                 }
                 callbackOK(asesorias)
             }.addOnFailureListener {
-            callbackError(it.message!!)
-        }
+                callbackError(it.message!!)
+            }
     }
 
     fun getProfeNombre(
@@ -192,8 +193,8 @@ class AsesoriasManager {
                 callbackOk(Registros)
                 // registrosGlobal.addAll(Registros)
             }.addOnFailureListener {
-            callbackError(it.message!!)
-        }
+                callbackError(it.message!!)
+            }
     }
 
     fun GetListaAsistentesFirebase(
@@ -218,27 +219,25 @@ class AsesoriasManager {
                 println("Cantidad de asistentes: " + Registros[0].asistente.size)
                 println("ASISTENTES: " + Registros[0].asistente.toString())
                 var xd = Registros[0].asistente.toString()
-                xd.replace("{","")
+                xd.replace("{", "")
                 println("xD:" + xd)
-               /* for (i in Registros[0].asistente.toList()) {
-                    val participante = asistente(
-                        i.codigo,
-                        i.motivo
-                    )
+                /* for (i in Registros[0].asistente.toList()) {
+                     val participante = asistente(
+                         i.codigo,
+                         i.motivo
+                     )
 
-                    asistentes.add(participante)
-                }*/
-
-
+                     asistentes.add(participante)
+                 }*/
 
 
-                val participante = asistente("20174017","xd")
+                val participante = asistente("20174017", "xd")
                 asistentes.add(participante)
                 callbackOk(asistentes)
                 // registrosGlobal.addAll(Registros)
             }.addOnFailureListener {
-            callbackError(it.message!!)
-        }
+                callbackError(it.message!!)
+            }
     }
 
     fun RegistrarAsesoriaYAlumno(
@@ -329,9 +328,9 @@ class AsesoriasManager {
             }
     }
 
-   /* fun BuscarAlumnoEnRegistro(
+    /* fun BuscarAlumnoEnRegistro(
 
-    )*/
+     )*/
 
     fun GetRegistrosAlumnoFirebase(
         callbackOk: (List<RegistrosAlumnos>) -> Unit,
@@ -355,7 +354,10 @@ class AsesoriasManager {
                     document.data["curso"] as String?,
                     "xd",//FUNCION PA BUSCAR EL MOTIVO
                     document.data["seccion"] as String?,
-                    buscarNombreProfe(UsuariosGlobal, document.data["codigo_profe"].toString()) as String?,
+                    buscarNombreProfe(
+                        UsuariosGlobal,
+                        document.data["codigo_profe"].toString()
+                    ) as String?,
                     fecha as String?,
                     "1",
                     document.data["url"] as String?
@@ -372,32 +374,57 @@ class AsesoriasManager {
     }
 
     fun getRegistroProfe(
-        id_Asesoria:String,
+        id_Asesoria: String,
         callbackOk: (Registro) -> Unit,
         callbackError: (String) -> Unit
     ) {
 
-        dbFirebase.collection("registro").whereEqualTo("asesoriaid",id_Asesoria).get().addOnSuccessListener { res ->
+        dbFirebase.collection("registro").whereEqualTo("asesoriaid", id_Asesoria).get()
+            .addOnSuccessListener { res ->
 
-            if(res.isEmpty){
-                println("No hay nada")
-            }else{
-                var Registro:Registro?=null
-                for (doc in res) {
-                    val registro = Registro(
-                        doc.id.toLong(),
-                        doc.data["asistente"] as List<HashMap<String,String>>
-                    )
-                    Registro=registro
+                if (res.isEmpty) {
+                    println("No hay nada")
+                } else {
+                    var Registro: Registro? = null
+
+                    for (doc in res) {
+                        if(doc["asistente"]==""){
+                        println("NO HAY ASISTENTES")
+                        }else{
+                            val registro = Registro(
+                                doc.id.toLong(),
+                                doc.data["asistente"] as List<HashMap<String, String>>
+                            )
+                            Registro = registro
+                        }
+                        callbackOk(Registro!!)
+
+                    }
 
                 }
-                callbackOk(Registro!!)
+
+
             }
-
-
-        }
             .addOnFailureListener {
                 callbackError(it.message!!)
             }
+    }
+
+    fun LimpiarAsistentes(
+        id_Asesoria: String,
+
+    ) {
+        var query=dbFirebase.collection("registro").document(id_Asesoria).delete()
+            .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully deleted!") }
+            .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }
+
+/*
+
+        dbFirebase.collection("registro").document()
+            .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully deleted!") }
+            .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }
+*/
+
+
     }
 }

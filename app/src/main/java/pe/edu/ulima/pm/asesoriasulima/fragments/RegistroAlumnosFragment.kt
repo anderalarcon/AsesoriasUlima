@@ -26,43 +26,6 @@ class RegistroAlumnosFragment(val codigoAlumno: String): Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        /*val listRegistros = arrayListOf<RegistrosAlumnos>()
-        listRegistros.add(
-            (RegistrosAlumnos(
-                1,
-                "Programación Móvil",
-                "Dudas del trabajo",
-                "801",
-                "Hernan Quintana",
-                "30/11/2021",
-                "1",
-                "enlace 1"
-            ))
-        )
-        listRegistros.add(
-            (RegistrosAlumnos(
-                2,
-                "Ingeniería de SW I",
-                "Tesis",
-                "801",
-                "Nina Hanco",
-                "30/11/2021",
-                "4",
-                "enlace 2"
-            ))
-        )
-        listRegistros.add(
-            (RegistrosAlumnos(
-                2,
-                "Seminario de Investigación I",
-                "Tesis - requisitos",
-                "902",
-                "Rosario",
-                "02/12/2021",
-                "4",
-                "enlace 3"
-            ))
-        )*/
 
         val rviRegistros = view.findViewById<RecyclerView>(R.id.rviRegistrosAlumnos)
         AsesoriasManager.instance.GetRegistrosAlumnoFirebase(codigoAlumno, { res ->
@@ -70,9 +33,8 @@ class RegistroAlumnosFragment(val codigoAlumno: String): Fragment() {
 
             rviRegistros.adapter = RegistrosAlumnosAdapter(
                 res,
-                this,
-                { }
-            )
+                this
+            ) { }
 
         }, { error ->
             println(error)

@@ -11,9 +11,10 @@
         android:layout_height="160dp"
         android:layout_alignParentRight="true"
         android:background="@drawable/ulimafondo"
-        android:layout_marginRight="0dp"
+        android:layout_marginRight="5dp"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="20dp"
+        android:layout_marginLeft="5dp"
         android:orientation="vertical">
 
             <TextView
@@ -87,7 +88,7 @@
             android:layout_marginTop="10dp"
             android:text="Lista de asistentes"
             android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
 
         <androidx.recyclerview.widget.RecyclerView

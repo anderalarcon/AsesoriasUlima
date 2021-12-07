@@ -450,6 +450,30 @@ class AsesoriasManager {
             }
     }
 
+    fun ComprobarAsistenteEnAsesoria(
+        callbackOk: (List<RegistroComprobar>) -> Unit,
+        callbackError: (String) -> Unit,
+        id_Asesoria: Long,
+    ) {
+        dbFirebase.collection("registro").whereEqualTo("asesoriaid", id_Asesoria.toString()).get().addOnSuccessListener { res ->
+            var Registro = arrayListOf<RegistroComprobar>()
+            for (doc in res) {
+                val registro = RegistroComprobar(
+                    //doc.id.toLong(),
+                    doc.data["asesoriaid"]as String,
+                    doc.data["asistente"] as List<HashMap<String,String>>
+                )
+                Registro.add(registro)
+
+            }
+            callbackOk(Registro)
+        }
+            .addOnFailureListener {
+                callbackError(it.message!!)
+            }
+    }
+
+
     fun buscarAsesoria(lista : List<Asesorias>, cod_asesoria: String): Asesorias{
         var asesoria : Asesorias?=null
         for (doc in lista) {

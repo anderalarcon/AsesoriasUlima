@@ -19,12 +19,13 @@
             android:layout_height="wrap_content"
             android:text="(*) Motivo: "
             android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
         <EditText
             android:id="@+id/eteMotivoAsesoria"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Introduzca su nuevo nombre"
+            android:hint="Introduzca el motivo"
             android:inputType="textPersonName"
             android:minHeight="48dp"
             app:layout_constraintEnd_toEndOf="parent"

@@ -32,7 +32,7 @@
 
     </TextView>
 
-    <TextView
+<!--    <TextView
         android:id="@+id/tviEnlanceAZOOM"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -41,7 +41,27 @@
         android:text="Enlacen a zoom url"
         android:textSize="18dp">
 
-    </TextView>
+    </TextView>-->
+    <Button
+        android:id="@+id/EnlanceAZOOM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Enlace a Zoom"
+        >
+
+    </Button>
+    <Button
+        android:id="@+id/LimpiarAsistentes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Limpiar Asistentes"
+        >
+
+
+
+    </Button>
 
 
     <LinearLayout
@@ -69,18 +89,14 @@
             android:layout_height="wrap_content"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:itemCount="3"
-            tools:listitem="@layout/card_asistente_profesor" />
-        <Button
-            android:id="@+id/LimpiarAsistentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Limpiar"
+            tools:listitem="@layout/card_asistente_profesor"
+
             >
 
 
+        </androidx.recyclerview.widget.RecyclerView>
 
-        </Button>
+
 
 
     </LinearLayout>

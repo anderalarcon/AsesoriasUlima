@@ -1,5 +1,7 @@
 package pe.edu.ulima.pm.asesoriasulima.fragments.profesor
 
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.content.Context
 import android.os.Bundle
 import android.text.method.LinkMovementMethod
@@ -44,6 +46,17 @@ class DetalleAsesoriaProfesorFragment( val asesoria:Asesorias):Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         println("PASA ASESORIA ID =?"+asesoria)
+
+
+        val butEnlaceAsesoriaProfesorDETALLE = view.findViewById<Button>(R.id.EnlanceAZOOM)
+
+        butEnlaceAsesoriaProfesorDETALLE.setOnClickListener {
+            var clipboard : ClipboardManager = getActivity()?.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+            val strEnlace = asesoria.url.toString()
+            val clip = ClipData.newPlainText("Copiado en el portapapeles", strEnlace)
+            clipboard.setPrimaryClip(clip)
+            Toast.makeText(requireContext(), "Copiado en el portapapeles", Toast.LENGTH_SHORT).show()
+        }
 //ASISTENTES
         val rviAsistentes = view.findViewById<RecyclerView>(R.id.ReciclerAsistentes_Profesor)
 
@@ -65,7 +78,7 @@ class DetalleAsesoriaProfesorFragment( val asesoria:Asesorias):Fragment() {
 
 //ASISTENTES
         var linktextvie:TextView
-        view.findViewById<TextView>(R.id.tviEnlanceAZOOM).setText("URL: "+asesoria.url)
+       /* view.findViewById<TextView>(R.id.tviEnlanceAZOOM).setText("URL: "+asesoria.url)*/
         view.findViewById<TextView>(R.id.tvinombreCursoDetalleProfesor).setText(asesoria.nombreCurso)
         view.findViewById<TextView>(R.id.tviSeccionDetaleProfesor).setText("Seccion: "+asesoria.seccion)
 

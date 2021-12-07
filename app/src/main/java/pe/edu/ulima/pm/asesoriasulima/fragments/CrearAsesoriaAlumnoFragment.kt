@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import pe.edu.ulima.pm.asesoriasulima.R
 import pe.edu.ulima.pm.asesoriasulima.model.Asesorias
@@ -50,8 +51,13 @@ class CrearAsesoriaAlumnoFragment(val Asesoriaxd: Asesorias, val codigoAlumno: S
 
 
         butConfirmar.setOnClickListener{
-            AsesoriasManager.instance.RegistrarAlumnoEnAsesoria(Asesoriaxd.id!!.toString(), asistente(codigoAlumno,eteMotivo.text.toString()) /*codigoAlumno,eteMotivo.text.toString()*/)
-            listener?.ConfirmarAsesoria()
+            if(view.findViewById<EditText>(R.id.eteMotivoAsesoria).text.toString() != ""){
+                AsesoriasManager.instance.RegistrarAlumnoEnAsesoria(Asesoriaxd.id!!.toString(), asistente(codigoAlumno,eteMotivo.text.toString()) /*codigoAlumno,eteMotivo.text.toString()*/)
+                listener?.ConfirmarAsesoria()
+            }else{
+                val myToast: Toast = Toast.makeText(requireContext(), "Ingrese el motivo", Toast.LENGTH_LONG)
+                myToast.show()
+            }
         }
 
         butRegresarDetalles.setOnClickListener{

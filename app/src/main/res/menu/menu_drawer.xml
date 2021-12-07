@@ -2,16 +2,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 <group android:checkableBehavior="single">
     <item android:id="@+id/menAlumnosAsesorias"
-        android:icon="@drawable/ic_launcher_foreground"
+        android:icon="@android:drawable/ic_menu_agenda"
         android:title="@string/alumno_menu_asesorias"/>
     <item android:id="@+id/menAlumnosRegistros"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@android:drawable/ic_input_get"
         android:title="@string/alumno_menu_registros"/>
     <item android:id="@+id/menCuenta"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@android:drawable/ic_menu_manage"
         android:title="@string/alumno_menu_cuenta"/>
     <item android:id="@+id/menAlumnosSalir"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@android:drawable/ic_menu_close_clear_cancel"
         android:title="@string/alumno_menu_salir"/>
 
 </group>

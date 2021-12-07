@@ -79,6 +79,8 @@ class DetalleAsesoriaAlumnoFragment (val Asesoria : Asesorias):Fragment() {
 
 
         butRegistrar.setOnClickListener{
+
+
             listener?.ChangeRegistrarAsesoriaAlumno(Asesoria)
 
         }

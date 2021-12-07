@@ -14,9 +14,7 @@ import com.google.android.material.navigation.NavigationView
 import com.google.gson.Gson
 import pe.edu.ulima.pm.asesoriasulima.fragments.*
 import pe.edu.ulima.pm.asesoriasulima.fragments.profesor.MisAsesoriasFragment
-import pe.edu.ulima.pm.asesoriasulima.model.Asesorias
-import pe.edu.ulima.pm.asesoriasulima.model.AsesoriasAlumno
-import pe.edu.ulima.pm.asesoriasulima.model.CuentaManager
+import pe.edu.ulima.pm.asesoriasulima.model.*
 import java.io.FileNotFoundException
 
 class MainActivity : AppCompatActivity(),
@@ -147,14 +145,59 @@ class MainActivity : AppCompatActivity(),
     }
 
     override fun ChangeVerDetalle(Asesoria: Asesorias) {
+       /* val auxAsesoria = arrayListOf<RegistroComprobar>()
+        var esta : Boolean = false*/
         AsesoriaGlobal = Asesoria
         println(AsesoriaGlobal)
         changeDetalleAsesoriaAlumnoFragmentCONINFO(Asesoria)
+       /* AsesoriasManager.instance.ComprobarAsistenteEnAsesoria({res -> auxAsesoria.addAll(res)
+            println("XDDDDDDDDDDDDDD: "  + auxAsesoria[0].asistente[1])
+
+            for (i in auxAsesoria){
+                for (j in i.asistente){
+                    if (j["codigo"] == getLoginCodigoInternoAlumno().username){
+                        esta = true
+                    }
+                }
+            }
+            println("ESTAAAAAAAAA: " + esta)
+            if(!esta){
+                changeDetalleAsesoriaAlumnoFragmentCONINFO(Asesoria)
+            }else{
+                Toast.makeText(this, "Ya se encuentra registrado", Toast.LENGTH_SHORT).show()
+            }
+
+        },
+            {error -> print(error)},
+            AsesoriaGlobal.id!!.toLong()
+        )*/
+
     }
 
     override fun ChangeRegistrarAsesoriaAlumno(Asesoria: Asesorias) {
         AsesoriaGlobal = Asesoria
-        changeCrearAsesoriaAlumnoFragment(AsesoriaGlobal)
+        val auxAsesoria = arrayListOf<RegistroComprobar>()
+        var esta : Boolean = false
+        AsesoriasManager.instance.ComprobarAsistenteEnAsesoria({res -> auxAsesoria.addAll(res)
+            //println("XDDDDDDDDDDDDDD: "  + auxAsesoria[0].asistente[1])
+
+            for (i in auxAsesoria){
+                for (j in i.asistente){
+                    if (j["codigo"] == getLoginCodigoInternoAlumno().username){
+                        esta = true
+                    }
+                }
+            }
+            println("ESTAAAAAAAAA: " + esta)
+            if(!esta){
+                changeCrearAsesoriaAlumnoFragment(AsesoriaGlobal)
+            }else{
+                Toast.makeText(this, "Ya se encuentra registrado", Toast.LENGTH_SHORT).show()
+            }
+        },
+            {error -> print(error)},
+            AsesoriaGlobal.id!!.toLong()
+        )
     }
 
     override fun RegresarAsesorias() {
